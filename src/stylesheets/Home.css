@@ -1,0 +1,460 @@
+.Home {
+    padding: 60px 5% 60px 5%;
+    width: 90%;
+    color: var(--mtc);
+    background-image: url('../background_images/pic-bus-1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.TR {
+    background-color: var(--mbcg);
+    width: 100%;
+    height: 2px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.MainContent {
+    padding: 0px 0px 40px 0px;
+}
+
+.WelcomminPart {
+    color: var(--blue);
+    padding: 20px 5%;
+    width: 90%;
+}
+
+.TextWelcommingPart {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.MainGreeting {
+    font-size: var(--vbfs);
+}
+
+.SecondGreeting {
+    font-size: var(--mfs);
+}
+
+.PickingPart {
+    margin-top: 40px;
+}
+
+.InfoAndLinks {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: calc(100% - 40px);
+    background-color: var(--light-gray);
+    padding: 20px;
+}
+
+.AdditionalLinks {
+    width: calc(100%);
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.AddLink {
+    border: 3px solid var(--dark-gray);
+    padding: 10px 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 5px;
+    border-radius: 5px;
+    background-color: var(--mbc);
+    color: var(--dark-gray);
+    transition: 0.5s;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.AddLink span {
+    color: var(--mtcb) !important;
+    font-size: var(--mfs);
+
+}
+
+.AddLink i {
+    color: var(--dark-gray) !important;
+    font-size: calc(var(--mfs));
+}
+
+.AddLink:hover {
+    transition: 0.5s;
+    box-shadow: 0 5px 2px rgba(0, 0, 0, 0.1);
+}
+
+.AdditionalDescriptions {
+    margin-top: 60px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: start;
+    gap: 30px;
+}
+
+.AdditionalDescr {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+}
+
+.TextAddLink {
+    color: var(--mtcb) !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.AdditionalDescr i {
+    font-size: calc(var(--vbfs) + 4px);
+    color: var(--light-black) !important;
+
+}
+
+.TextAddLink span:nth-child(1) {
+    font-size: calc(var(--mbfs) - 4px);
+    font-weight: 400;
+}
+
+.TextAddLink span:nth-child(2) {
+    font-size: calc(var(--mfs) - 2px);
+}
+
+.MapSegment {
+    margin-top: 60px;
+    width: calc(100% + 0px);
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    transform: translateX(-20px);
+    padding: 0 20px;
+    background-color: var(--light-gray);
+    transition: 0.5s !important;
+}
+
+.MapSegment:hover {
+    background-color: var(--gray);
+    transition: 0.5s !important;
+
+}
+
+.ImageMap {
+    height: 180px;
+    object-fit: contain;
+}
+
+.ImageMap img {
+    width: 100%;
+    height: 100%;
+
+}
+
+.TextMapSeg {
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--mtcb);
+}
+
+.TextPartMap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.TextMapSeg span {
+    color: var(--mtcb) !important;
+    font-weight: 500;
+}
+
+.MainNameMapSeg {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 5px;
+    font-size: var(--mbfs);
+    font-weight: 600 !important;
+}
+
+.AddNameMapSeg {
+    font-size: var(--mls);
+}
+
+.AddNameMapSeg i {
+    font-size: calc(var(--mls)) !important;
+    color: var(--mtcb) !important;
+}
+
+.SecNameMapSeg {
+    font-size: var(--mfs);
+}
+
+.DescriptionOfServices {
+    background-color: var(--mbc);
+    border-radius: 8px;
+    padding: 20px 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    color: var(--mtcb);
+}
+
+.TextDescSer {
+    margin: 15px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.TextDescSer span:nth-child(1) {
+    font-size: var(--mbfs);
+    font-weight: 600;
+}
+
+.TextDescSer span:nth-child(2) {
+    font-size: var(--mfs);
+    font-weight: 400;
+}
+
+@media (max-width:1440px) {
+    .AddLink span {
+        color: var(--mtcb) !important;
+        font-size: calc(var(--mfs) - 4px);
+
+    }
+
+    .AddLink i {
+        color: var(--dark-gray) !important;
+        font-size: calc(var(--mfs) - 4px);
+    }
+
+    .AdditionalDescriptions {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .AdditionalDescr:nth-child(1),
+    .AdditionalDescr:nth-child(3) {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: start;
+        text-align: start;
+        gap: 20px;
+    }
+
+    .AdditionalDescr:nth-child(2),
+    .AdditionalDescr:nth-child(4) {
+        flex-direction: row-reverse;
+        align-items: flex-start;
+        justify-content: end;
+        text-align: start;
+        gap: 0px;
+    }
+
+    .AdditionalDescr:nth-child(1) .TextAddLink,
+    .AdditionalDescr:nth-child(3) .TextAddLink {
+        align-items: flex-start;
+
+    }
+
+    .AdditionalDescr:nth-child(2) .TextAddLink,
+    .AdditionalDescr:nth-child(4) .TextAddLink {
+        align-items: flex-end;
+    }
+
+    .AdditionalDescr:nth-child(2) .TextAddLink span:nth-child(2),
+    .AdditionalDescr:nth-child(4) .TextAddLink span:nth-child(2) {
+        display: flex;
+        justify-content: end;
+    }
+
+
+
+    .AdditionalDescr span {
+        width: 60%;
+    }
+
+    .AdditionalDescr i {
+        font-size: 40px;
+    }
+}
+
+@media (max-width:1024px) {
+    .AdditionalDescr span {
+        width: 70%;
+    }
+
+    .PickingPart {
+        margin-top: 40px;
+    }
+
+    .AdditionalLinks {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .AddLink {
+        width: auto;
+    }
+
+
+}
+
+@media (max-width:768px) {
+    .DescriptionOfServices {
+        padding: 20px;
+        gap: 0px;
+    }
+
+    .MapSegment {
+        flex-direction: column-reverse;
+        width: calc(100% + 0px);
+        padding: 0 20px;
+        margin: 30px 0px;
+
+    }
+
+    .TextMapSeg {
+        gap: 20px;
+    }
+
+    .TextPartMap {
+        gap: 2px;
+    }
+
+    .ImageMap {
+        height: auto;
+    }
+
+
+    .MainNameMapSeg {
+        font-size: calc(var(--mbfs) + 4px);
+    }
+
+    .SecNameMapSeg {
+        font-size: calc(var(--mfs) + 0px);
+    }
+
+    .PickingPart {
+        margin-top: 40px;
+    }
+
+    .AdditionalLinks {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .AddLink {
+        width: auto;
+        align-items: center;
+        justify-content: start;
+        gap: 20px;
+
+    }
+
+    .AddLink i,
+    .AddLink span {
+        font-size: var(--mbfs);
+    }
+
+    .AddLink i {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+    }
+
+    .PickingPart {
+        margin-top: 30px;
+    }
+
+
+}
+
+
+@media (max-width:426px) {
+    .TextMapSeg {
+        gap: 15px;
+    }
+
+    .MainNameMapSeg {
+        font-size: calc(var(--mbfs) + 10px) !important;
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        align-items: flex-end;
+    }
+
+    .AddNameMapSeg {
+        font-size: var(--mfs);
+    }
+
+    .AddNameMapSeg i {
+        font-size: calc(var(--mfs) + 0px) !important;
+    }
+
+
+
+    .ImageMap {
+        width: 100%;
+        height: auto;
+    }
+
+    .SecNameMapSeg {
+        font-size: calc(var(--mfs) + 2px);
+    }
+
+
+    .PickingPart {
+        margin-top: 30px;
+    }
+
+    .AdditionalDescriptions {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .AdditionalDescr {
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        gap: 10px !important;
+    }
+
+    .AdditionalDescr span {
+        width: 100%;
+    }
+
+    .TextAddLink span:nth-child(1) {
+        font-size: calc(var(--mbfs) + 4px);
+    }
+
+    .TextAddLink span:nth-child(2) {
+        font-size: calc(var(--mfs));
+    }
+
+    .TextMapSeg {
+        gap: 10px;
+    }
+
+}

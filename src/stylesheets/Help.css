@@ -1,0 +1,48 @@
+.Help {
+    width: 90%;
+    padding: 60px 5%;
+    background-image: url('../background_images/pic-bus-4.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.MainPart {
+    width: calc(70% + 0px);
+    padding: 20px 15%;
+    margin-top: 0px;
+    border-radius: 8px;
+    background-color: var(--mbc);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.Heading {
+    color: var(--mtcb);
+    font-size: var(--mbfs);
+}
+
+.Subheading {
+    color: var(--mtcb);
+    font-size: var(--mfs);
+}
+
+.Text_subheading {
+    color: var(--mtcb);
+    font-size: var(--mfs);
+}
+
+@media (max-width:768px) {
+    .MainPart {
+        width: calc(80% + 0px);
+        padding: 20px 10%;
+    }
+}
+
+@media (max-width:426px) {
+    .MainPart {
+        width: calc(90% + 0px);
+        padding: 20px 5%;
+    }
+}

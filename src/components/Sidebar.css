@@ -1,0 +1,24 @@
+.sidebar {
+    width: 200px;
+    padding: 20px;
+    background: #f4f4f4;
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .language-switch {
+    margin-top: 20px;
+  }
+  

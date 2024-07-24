@@ -1,0 +1,373 @@
+.picking-container {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  padding: 20px;
+  color: var(--blue);
+  background-color: var(--light-gray);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-size: var(--mfs);
+}
+
+.picking-passengers input[type=number]::-webkit-outer-spin-button,
+.picking-passengers input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.from-to-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  width: 100%;
+  position: relative;
+}
+
+.from-to-container .picking-field,
+.from-to-container .from-field {
+  width: 50% !important;
+}
+
+.picking-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.from-field,
+.to-field {
+  width: 48%;
+}
+
+.picking-select {
+  width: 100%;
+}
+
+.swap-button {
+  height: 40px;
+  width: 40px;
+  border: none;
+  background-color: var(--blue);
+  color: var(--mtc);
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.5s;
+  z-index: 999;
+}
+
+.swap-button:hover {
+  background-color: var(--dark-blue);
+}
+
+.to-field label,
+.from-field label {
+  margin-left: 30px !important;
+}
+
+.css-qbdosj-Input,
+.css-3m5cbd-Input {
+  padding-left: 20px !important;
+}
+
+.css-166bipr-Input,
+.css-1ve7j4l-Input {
+  padding-left: 20px !important;
+}
+
+.css-166bipr-Input:after {
+  margin: 0px 0px 0px 20px !important;
+}
+
+
+
+
+.picking-datepicker {
+  height: 22px;
+}
+
+.picking-datepicker {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--gray);
+}
+
+.picking-passengers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.picking-passengers button {
+  height: 40px;
+  width: 40px;
+  border: none;
+  background-color: var(--blue);
+  color: var(--mtc);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.picking-passengers input {
+  width: 40%;
+  height: 40px;
+  text-align: center;
+  border: 1px solid var(--gray);
+  border-radius: 4px;
+}
+
+.picking-search {
+  background-color: var(--blue);
+  color: var(--mtc);
+  height: 40px;
+  width: 170px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-self: flex-end;
+}
+
+.picking-search:hover {
+  background-color: var(--dark-blue);
+}
+
+.additional-fields {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.css-13xzpp8-singleValue {
+  margin-left: 20px !important;
+}
+
+/* Responsive styles */
+@media (max-width: 1920px) {
+  .additional-fields {
+    flex-direction: row;
+  }
+
+  .from-to-container {
+    flex-direction: row;
+  }
+
+  .picking-field {
+    width: 200px;
+  }
+}
+
+@media (max-width: 1440px) {
+  .from-to-container {
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .additional-fields {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+  }
+
+  .swap-button {
+    margin-top: 26px;
+    height: 37px;
+    width: 37px;
+  }
+
+  .picking-container {
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+
+  .picking-container {
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .picking-passengers input {
+    width: 40%;
+  }
+
+  .additional-fields .picking-field:nth-child(1) {
+    width: calc(62.5% - 20px);
+  }
+
+  .additional-fields .picking-field:nth-child(2) {
+    width: calc(37.5% - 19px);
+  }
+
+  .from-field,
+  .to-field {
+    width: 100%;
+  }
+
+  .picking-select {
+    width: 100%;
+  }
+
+  .picking-datepicker {
+    width: calc(100% - 16px);
+  }
+
+  .picking-search {
+    position: absolute;
+    width: 15%;
+    right: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .swap-button {
+    margin-top: 20px;
+  }
+
+  .picking-passengers button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .picking-passengers input {
+    height: 40px;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  .picking-container {
+    padding-bottom: 74px;
+  }
+
+  .picking-field {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+
+  .picking-search {
+    right: 20px;
+    top: 204px;
+    width: calc(100% - 40px);
+  }
+
+  .swap-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .additional-fields {
+    width: 100%;
+  }
+
+  .additional-fields .picking-field:nth-child(1) {
+    width: calc(50% - 18px);
+  }
+
+  .additional-fields .picking-field:nth-child(2) {
+    width: calc(50% - 18px);
+  }
+
+}
+
+@media (max-width: 426px) {
+  .from-to-container {
+    flex-direction: column;
+
+  }
+
+  .from-to-container .picking-field,
+  .from-to-container .from-field .css-b62m3t-container {
+    width: 100% !important;
+  }
+
+  .swap-button {
+    width: 38px;
+    height: 38px;
+    margin-top: 12px;
+    margin-left: 50%;
+    transform: translateX(-100%);
+  }
+
+  .css-13xzpp8-singleValue {
+    margin-right: 0 !important;
+  }
+
+  .css-1j28y3l-control {
+    padding-right: 5px !important;
+  }
+
+  .picking-container {
+    padding-bottom: 84px;
+  }
+
+  .picking-search {
+    top: 274px;
+  }
+
+  .css-qbdosj-Input,
+  .css-3m5cbd-Input {
+    padding-left: 5px !important;
+  }
+
+  .css-166bipr-Input,
+  .css-1ve7j4l-Input {
+    padding-left: 5px !important;
+  }
+
+  .css-166bipr-Input:after {
+    margin: 0px 0px 0px 5px !important;
+  }
+
+  .css-13xzpp8-singleValue {
+    margin-left: 5px !important;
+  }
+
+  .to-field label,
+  .from-field label{
+    margin-left: 15px !important;
+  }
+
+  .picking-passengers button {
+    width: 25px;
+    height: 25px;
+  }
+
+  .picking-passengers input {
+    height: 25px;
+  }
+
+  .additional-fields .picking-field:nth-child(2){
+    gap: 15px;
+  }
+}
+
+@media (max-width: 320px) {
+  .swap-button {
+    width: 38px;
+    height: 38px;
+    margin-top: 5px;
+  }
+
+  .picking-search {
+    top: 254px;
+  }
+
+}

@@ -1,0 +1,61 @@
+.InfoAboutUs {
+    width: 90%;
+    padding: 60px 5%;
+    background-image: url('../background_images/pic-bus-2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.WhoWe {
+    color: var(--mtcd);
+    font-size: var(--vbfs);
+}
+
+.WeAre {
+    color: var(--blue);
+    font-size: var(--vbfs);
+    margin-left: 40px;
+}
+
+.TextPartAbout {
+    width: calc(70% + 0px);
+    padding: 20px 15%;
+    margin-top: 40px;
+    border-radius: 8px;
+    background-color: var(--mbc);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.TitlePart {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.NameTitlePart span {
+    color: var(--mtcb);
+    font-size: var(--mbfs);
+
+}
+
+.TextTitlePart {
+    color: var(--mtcb);
+    font-size: var(--mfs);
+}
+
+@media (max-width:768px) {
+    .TextPartAbout {
+        width: calc(80% + 0px);
+        padding: 20px 10%;
+    }
+}
+
+@media (max-width:426px) {
+    .TextPartAbout {
+        width: calc(90% + 0px);
+        padding: 20px 5%;
+    }
+}

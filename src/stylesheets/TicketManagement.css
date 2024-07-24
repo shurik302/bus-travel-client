@@ -1,0 +1,47 @@
+/* Basic styles for the table */
+.MuiTable-root {
+    width: 100%;
+  }
+  
+  .MuiTableCell-root {
+    padding: 16px;
+    font-size: 14px;
+  }
+  
+  .MuiTableHead-root {
+    background-color: #f5f5f5;
+  }
+  
+  .MuiTableRow-root:nth-of-type(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Styles for buttons */
+  .MuiButton-containedPrimary {
+    background-color: #1976d2;
+    color: white;
+  }
+  
+  .MuiButton-containedSecondary {
+    background-color: #dc004e;
+    color: white;
+  }
+  
+  .MuiButton-containedDefault {
+    background-color: #e0e0e0;
+    color: black;
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 768px) {
+    .MuiTableCell-root {
+      padding: 8px;
+      font-size: 12px;
+    }
+  
+    .MuiButton-root {
+      font-size: 10px;
+      padding: 4px;
+    }
+  }
+  

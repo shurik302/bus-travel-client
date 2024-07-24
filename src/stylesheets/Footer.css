@@ -1,0 +1,187 @@
+.Footer {
+    width: 90%;
+    padding: 30px 5%;
+    background-color: var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    position: relative;
+}
+
+.UpFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.UpFooter > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.LogoFooter {
+    height: 50px;
+    object-fit: contain;
+}
+
+.LogoFooter a img {
+    width: 100%;
+    height: 100%;
+}
+
+.LinksFooter {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.SocialMedia {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    font-size: var(--mbfs);
+}
+
+.NameSectionFooter {
+    font-size: var(--mbfs);
+    color: var(--mtc);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.NameSectionFooter i {
+    margin-left: 10px;
+    transition: transform 0.5s;
+}
+
+.NameSectionFooter i.open {
+    transform: rotate(180deg);
+}
+
+
+.DLeftPartFooter {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+}
+
+.DownFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: var(--mls);
+    color: var(--mtc);
+}
+
+.DRightPartFooter .fa-copyright {
+    font-size: var(--mls);
+    display: flex;
+    align-items: center;
+}
+
+.DRightPartFooter {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+@media (max-width: 1024px) {
+    .LeftFoooter {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 30px;
+    }
+
+    .UpFooter{
+        margin-top: 70px;
+    }
+}
+
+@media (max-width: 769px) {
+    .DownFooter {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        
+    }
+}
+
+@media (max-width: 426px) {
+    .DownFooter{
+        font-size: var(--mbfs);
+        gap: 20px;
+    }
+
+    .DLeftPartFooter{
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .DLeftPartFooter > span{
+        display: none;
+    }
+    
+    .UpFooter {
+        flex-direction: column;
+    }
+
+    .NameSectionFooter {
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .LinksFooter {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        width: 100%;
+    }
+
+    .LinksFooter a{
+        font-size: var(--mfs);
+    }
+
+    .LinksFooter.open {
+        max-height: 500px;
+        
+    }
+
+    .SocialMedia {
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        font-size: var(--vbfs);
+        gap: 15px;
+    }
+
+    .LogoFooter {
+        display: flex;
+        justify-content: center;
+    }
+
+    .LogoFooter a img {
+        width: 77.8px;
+        height: 50px;
+    }
+
+    .NameSectionFooter:active,
+    .NameSectionFooter:focus {
+        background-color: transparent;
+    }
+}
+
+@media (min-width: 426px) {
+    .NameSectionFooter i {
+        display: none;
+    }
+
+    .NameSectionFooter {
+        cursor: default;
+    }
+}

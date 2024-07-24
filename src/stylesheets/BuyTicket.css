@@ -1,0 +1,421 @@
+.BuyTicketUser {
+  padding: 20px 5% 60px 5%;
+  gap: 20px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.MainInfoBuyTicketUser {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.TicketInfoBuy {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--dark-blue);
+  color: var(--mtc);
+  border-radius: 4px;
+}
+
+.NameTitle {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+.NameTitle span {
+  font-size: var(--mbfs) !important;
+}
+
+.MainInputsNameUser {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.MainInputsNameUser input {
+  width: 50%;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid var(--light-gray);
+  padding: 0px 0px 0px 10px;
+  transition: border-color 0.5s;
+}
+
+.MainInputsNameUser input:focus-visible {
+  outline: 2px solid var(--gray);
+}
+
+.MainInputsNameUser input::placeholder {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+.StageDiv {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--gray);
+  border-radius: 8px;
+  padding: 20px;
+  gap: 14px;
+}
+
+.AddInfoTicketBuy {
+  width: 20%;
+  background-color: var(--gray);
+  padding: 20px;
+  border-radius: 8px;
+  height: fit-content;
+}
+
+.BaggageDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.BaggageDiv span {
+  font-size: var(--mbfs);
+}
+
+.AddInfoBaggage {
+  font-size: var(--mfs) !important;
+}
+
+.InfoBaggageType {
+  display: flex;
+  flex-direction: column;
+}
+
+.picking-baggage {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.picking-baggage input {
+  width: 60px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: var(--mfs);
+}
+
+.GorisontalLine {
+  height: 1px;
+  width: 100%;
+  margin: 20px 0px;
+  background-color: black;
+}
+
+.LargeBaggage {
+  margin-top: 20px;
+}
+
+.picking-baggage button {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: var(--blue);
+  border: none;
+  color: var(--mtc);
+  font-size: var(--mfs);
+}
+
+.DataContactUserMain {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.DataContactUserMain>div {
+  width: 50%;
+  height: 40px;
+}
+
+.DataContactUserMain div input {
+  width: 100%;
+  height: 100%;
+  font-size: var(--mfs);
+  border: 1px solid var(--gray);
+  border-radius: 4px;
+  padding: 0px 0px 0px 10px;
+  transition: border-color 0.5s;
+}
+
+.DataContactUserMain div input:focus-visible {
+  border: 1px solid var(--gray);
+  border-radius: 4px;
+}
+
+.phone-input {
+  height: 40px;
+}
+
+.phone-input>div {
+  width: 100%;
+  height: 40px;
+}
+
+.form-control {
+  height: 40px !important;
+  width: 100% !important;
+  transition: border-color 0.5s;
+}
+
+.phone-input input {
+  width: 100%;
+  height: 40px;
+  font-size: var(--mfs);
+  border: 1px solid var(--gray);
+  border-radius: 4px;
+  padding: 0px 0px 0px 10px;
+}
+
+.ButtonConfirmBuyTicket button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px 0px;
+  font-size: var(--mfs);
+  color: var(--mtc);
+  border: none;
+  border-radius: 8px;
+  background-color: var(--blue);
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.ButtonConfirmBuyTicket button:disabled {
+  background-color: var(--danger-red);
+}
+
+.ButtonConfirmBuyTicket button:hover {
+  transition: 0.5s;
+  background-color: var(--dark-blue);
+}
+
+.ProgressTicketBuy {
+  display: flex;
+  flex-direction: row;
+}
+
+.ProgressSymbolVertical {
+  height: 60px;
+}
+
+.ProgressSymbolVertical .LineTB {
+  background-color: var(--dark-blue);
+  width: 3px;
+  height: 100%;
+}
+
+.ProgressTicketBuyVertical {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  /* Додаємо вирівнювання по висоті */
+}
+
+.FromToTicketTicketBuyVertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: var(--mfs);
+  flex-grow: 1;
+  /* Додаємо для адаптивної висоти */
+}
+
+.FromTicket,
+.ToTicket {
+  display: flex;
+  flex-direction: column;
+}
+
+.ToTicket {
+  text-align: end;
+}
+
+.RightPartBaggage {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.AddInfoTicketBT,
+.PriceBuyTicket {
+  margin-top: 20px;
+  margin-left: 10px;
+  font-size: var(--mfs);
+}
+
+.FromToTicketTicketBuyVertical {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.FromToTicketTicketBuyVertical>div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.CityInfoTicketBuy {
+  font-size: var(--mbfs);
+  color: var(--mtcb);
+}
+
+.StreetInfoTicketBuy {
+  font-size: var(--mfs);
+  color: var(--mtcb);
+}
+
+.DepartureInfoTicketBuy {
+  font-size: var(--mfs);
+  color: var(--mtcb);
+}
+
+.RouteSymbolBuyTicket {
+  position: relative;
+  width: 20px;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+.RouteSymbolBuyTicket .Line {
+  position: absolute;
+  width: 3px;
+  height: 100%;
+  background-color: var(--dark-blue);
+}
+
+.RouteSymbolBuyTicket .Circle {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--dark-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.RouteSymbolBuyTicket .Circle .InnerCircle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--mtc);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SmallCircle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var (--dark-blue);
+  z-index: 999;
+}
+
+.RouteSymbolBuyTicket .Circle.top {
+  top: 0;
+}
+
+.RouteSymbolBuyTicket .Circle.bottom {
+  bottom: 0;
+}
+
+@media (max-width:768px) {
+  .RouteSymbolBuyTicket {
+    height: fit-content;
+  }
+
+  .NameTitle {
+    gap: 10px;
+  }
+
+  .Stage {
+    width: 30px;
+    height: 30px;
+  }
+
+  .MainInfoBuyTicketUser {
+    flex-direction: column;
+  }
+
+  .MainInfoBuyTicketUser>div {
+    width: 100%;
+  }
+
+  .AddInfoTicketBuy {
+    width: calc(100% - 40px) !important;
+  }
+
+  .FromToTicketTicketBuyVertical {
+    font-size: var(--mbfs);
+  }
+
+  .AddInfoTicketBT,
+  .PriceBuyTicket {
+    font-size: var(--mbfs);
+  }
+}
+
+@media (max-width:426px) {
+  .DataContactUserMain {
+    flex-direction: column;
+  }
+
+  .DataContactUserMain>div {
+    width: 100%;
+  }
+
+  .EnterEmailBT input {
+    width: calc(100% - 10px) !important;
+  }
+
+  .picking-baggage button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .picking-baggage input {
+    width: 40px;
+    height: 26px;
+  }
+
+  .MainInputsNameUser {
+    flex-direction: column;
+  }
+
+  .MainInputsNameUser input {
+    width: calc(100% - 10px);
+  }
+}

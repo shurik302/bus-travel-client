@@ -1,0 +1,223 @@
+.ticket {
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  padding: 10px 20px;
+  width: calc(100% - 40px);
+  background-color: var(--gray);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.MainInfoTicket {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.FromToTicket {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.FromToTicket div span {
+  font-size: var(--mbfs);
+}
+
+.FromToTicket div span:nth-child(2) {
+  font-size: var(--mfs);
+}
+
+.TimeTicket div span {
+  font-size: var(--mfs);
+}
+
+.TimeTicket {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.AddInfoTicket {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.AddInfoTicket > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.AddInfoTicket div span {
+  font-size: var(--mfs);
+}
+
+.ProgressSymbol {
+  position: relative;
+  width: calc(100% - 0px);
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.ProgressSymbol .Line {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: var(--dark-blue);
+}
+
+.ProgressSymbol .Circle {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--dark-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ProgressSymbol .Circle .InnerCircle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--mtc);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ProgressSymbol .SmallCircle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--dark-blue);
+  z-index: 999;
+}
+
+.ProgressSymbol .Circle.left {
+  left: 0;
+}
+
+.ProgressSymbol .Circle.right {
+  right: 0;
+}
+
+.PriceInfoTicket {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  height: 100%;
+}
+
+.PriceTicket {
+  font-size: var(--mbfs);
+  display: flex;
+  flex-direction: column;
+}
+
+.BuyTicket {
+  border-radius: 8px;
+  background-color: var(--blue);
+  width: calc(100% - 40px);
+  height: 100%;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.BuyTicket:hover {
+  background-color: var(--dark-blue);
+  transition: 0.5s;
+}
+
+.BuyTicketText {
+  font-size: var(--mfs);
+  color: var(--mtc);
+}
+
+@media (max-width: 1024px) {
+  .MainInfoTicket {
+    width: 70%;
+  }
+
+  .PriceInfoTicket {
+    width: 30%;
+    display: flex;
+    justify-content: end;
+  }
+}
+
+@media (max-width: 768px) {
+  .ticket {
+    flex-direction: column;
+  }
+
+  .MainInfoTicket {
+    width: 100%;
+  }
+
+  .PriceInfoTicket {
+    width: calc(100% - 0px);
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .PriceTicket {
+    justify-content: start;
+    align-items: center;
+    flex-direction: row;
+    width: calc(100% + 0px);
+  }
+
+  .PriceTicket span {
+    width: 100%;
+    font-size: calc(var(--mbfs) + 4px);
+  }
+
+  .BuyTicket {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px 0px;
+    margin-top: 0;
+  }
+
+  .BuyTicketText {
+    display: flex;
+    align-self: center;
+    font-size: var(--mbfs) !important;
+    width: auto !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .PriceTicket span {
+    font-size: calc(var(--mfs) + 4px);
+  }
+
+  .BuyTicketText {
+    font-size: var(--mfs) !important;
+  }
+}

@@ -1,0 +1,268 @@
+.Travels {
+    display: flex;
+    flex-direction: column;
+    width: calc(80% - 40px);
+    background-color: var(--mbc);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 60px 10%;
+    padding: 20px 20px 0px 20px;
+    gap: 40px;
+}
+
+.Date {
+    font-size: var(--mfs);
+}
+
+.Welcome {
+    display: flex;
+    justify-content: center;
+}
+
+.Welcome span {
+    font-size: var(--vbfs);
+    color: var(--blue);
+}
+
+.Information span {
+    font-size: var(--mbfs);
+    color: var(--mtcb);
+}
+
+.FutureTravelsPage {
+    flex-direction: column !important;
+    width: calc(100% + 40px) !important;
+}
+
+.DontHaveTravels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    width: calc(100% + 0px);
+    transform: translateX(-20px);
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.SadSmile {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+}
+
+.SadSmile img {
+    width: 100%;
+    height: 100%;
+}
+
+.InfoHaveNotTravels {
+    font-size: var(--mbfs);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.ProposeBuyTicket {
+    margin-top: 10px;
+    font-size: var(--mfs);
+    text-align: center;
+}
+
+.ButtonBuyTickets {
+    padding: 10px;
+    border: 2px solid var(--dark-blue);
+    border-radius: 25px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: 0.5s ease !important;
+}
+
+.ButtonBuyTickets:hover {
+    transition: 0.5s ease !important;
+}
+
+.ButtonBuyTickets span {
+    font-size: var(--mfs) !important;
+    color: var(--dark-blue) !important;
+}
+
+.HaveTravels {
+    width: calc(100% + 0px);
+    transform: translateX(-20px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.HaveTravels > div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.TripTravels {
+    height: 250px;
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.MainInfoTravels {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.TimeTravels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-right: 20px;
+    font-size: var(--mfs);
+}
+
+.TimeTravels div {
+    display: flex;
+    flex-direction: column;
+}
+
+.RouteTravels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 40px;
+    font-size: var(--mbfs) !important;
+}
+
+.RouteTravels div > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.RouteSymbolTravels {
+    position: relative;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
+    height: 100%;
+}
+
+.RouteSymbolTravels .Line {
+    position: absolute;
+    width: 3px;
+    height: 100%;
+    background-color: var(--dark-blue);
+}
+
+.RouteSymbolTravels .Circle {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--dark-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.RouteSymbolTravels .Circle .InnerCircle {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--mtc);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.SmallCircle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--dark-blue);
+    z-index: 999;
+}
+
+.RouteSymbolTravels .Circle.top {
+    top: 0;
+}
+
+.RouteSymbolTravels .Circle.bottom {
+    bottom: 0;
+}
+
+.AdditionalInfoTravels {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--mfs);
+}
+
+.DayTrips {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .ButtonBuyTickets {
+        padding: 5px;
+        border: 2px solid var(--dark-blue);
+        border-radius: 25px;
+        margin-top: 20px;
+    }
+
+    .TripTravels {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .AdditionalInfoTravels {
+        flex-direction: row;
+        gap: 40px;
+    }
+
+    .TimeTravels {
+        margin-right: 0;
+    }
+
+    .RouteSymbol .Circle {
+        width: 11px;
+        height: 11px;
+    }
+
+    .RouteSymbol .Circle .InnerCircle {
+        width: 6px;
+        height: 6px;
+    }
+
+    .SmallCircle {
+        width: 3px;
+        height: 3px;
+    }
+
+    .RouteSymbol .Line {
+        width: 2px;
+    }
+
+    .Travels {
+        gap: 20px;
+    }
+}

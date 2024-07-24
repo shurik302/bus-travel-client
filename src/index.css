@@ -1,0 +1,129 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  padding-inline-start: 0px;
+  max-width: 100%;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+a,
+i {
+  text-decoration: none !important;
+  color: var(--mtc) !important;
+  transition: color 0.5s !important;
+}
+
+a:hover,
+i:hover {
+  color: var(--gray) !important;
+  transition: color 0.5s !important;
+}
+
+/* Застосування кольору для всіх дочірніх елементів всередині посилання */
+a * {
+  text-decoration: none !important;
+  color: var(--mtc) !important;
+  transition: color 0.5s !important;
+}
+
+a:hover * {
+  color: var(--gray) !important;
+  transition: color 0.5s !important;
+}
+
+/* ДОКА ПО ROOT
+mtc - main text color - для текста 
+
+mtcd - main text color dark - для текста темный
+
+mls - main little size - размер шрифта для маленького текста
+
+mfs - main font size - размер шрифта для большинства текстов 
+
+mbfs - main big font size - увеличеный размер шрифта для текста
+
+mbc - main background color
+
+*/
+
+
+:root {
+  --mtc: #ffffff;
+  --mtcb: #000000;
+  --mtcd: #2356ff;
+  --mbc: #ffffff;
+  --mbcg: #a3a3a3;
+  --mbcb: #000000;
+  --blue: #1e92ff;
+  --dark-blue: #2356ff;
+  --light-gray: #EFEFEF;
+  --gray: #cecece;
+  --dark-gray: #a3a3a3;
+  --light-black: #505050;
+  --danger-red: #ff0505;
+}
+
+@media (max-width:1920px) {
+  :root {
+    --mls: 16px;
+    --mfs: 20px;
+    --mbfs: 32px;
+    --vbfs: 46px;
+  }
+}
+
+@media (max-width:1440px) {
+  :root {
+    --mls: 14px;
+    --mfs: 18px;
+    --mbfs: 28px;
+    --vbfs: 42px;
+  }
+}
+
+@media (max-width:1024px) {
+  :root {
+    --mls: 12px;
+    --mfs: 16px;
+    --mbfs: 24px;
+    --vbfs: 38px;
+  }
+}
+
+@media (max-width:1024px) {
+  :root {
+    --mls: 10px;
+    --mfs: 14px;
+    --mbfs: 20px;
+    --vbfs: 34px;
+  }
+}
+
+@media (max-width:426px) {
+  :root {
+    --mls: 8px;
+    --mfs: 12px;
+    --mbfs: 16px;
+    --vbfs: 32px;
+  }
+}
+
+@media (max-width:320px) {
+  :root {
+    --mls: 6px;
+    --mfs: 10px;
+    --mbfs: 14px;
+    --vbfs: 24px;
+  }
+}

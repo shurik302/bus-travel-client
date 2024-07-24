@@ -1,0 +1,168 @@
+.Authorisation {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    background-color: var(--mbc);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    justify-content: space-between;
+    margin: 60px 20%;
+}
+
+.LeftPart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(50% - 40px);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.LeftPart h2 {
+    margin-bottom: 10px;
+}
+
+.SignIn{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.DownPart {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.Form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.LeftPart .Form input {
+    border: 1px solid var(--gray);
+    border-radius: 20px;
+    padding: 10px;
+    width: calc(80% - 20px);
+    height: 20px;
+}
+
+.LeftPart .Form button {
+    padding: 10px;
+    background-color: var(--blue);
+    color: var(--mtc);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px;
+    width: 80%;
+    height: 40px;
+    transition: 0.5s
+}
+
+.LeftPart .Form button:hover {
+    background-color: var(--dark-blue);
+    transition: 0.5s
+}
+
+.LeftPart .SocialIcons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.SocialIcons{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.LeftPart .SocialIcons i {
+    margin-top: 20px;
+    color: var(--gray) !important;
+    font-size: var(--mbfs);
+    cursor: pointer;
+}
+
+.LeftPart .SocialIcons i:hover {
+    color: var(--light-black) !important;
+}
+
+.RightPart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    background: var(--dark-blue);
+    color: var(--mtc);
+    padding: 40px 10%;
+    text-align: center;
+}
+
+.RightPart h2 {
+    margin-bottom: 10px;
+}
+
+.RightPart p {
+    margin-bottom: 20px;
+}
+
+.RightPart a {
+    background-color: var(--secondary-button-bg);
+    color: var(--secondary-button-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 20px;
+    border: 2px solid var(--mtc);
+}
+
+@media (max-width: 1024px) {
+    .Authorisation{
+        width: 80%;
+        margin: 60px 10%;
+    }
+}
+
+@media (max-width: 768px) {
+    .LeftPart .SocialIcons i{
+        font-size: var(--vbfs);
+    }
+    
+    .Authorisation {
+        flex-direction: column;
+        width: 90%;
+        margin: 60px 5%;
+    }
+
+    .LeftPart,
+    .RightPart {
+        width: calc(100% - 40px);
+        padding: 20px;
+    }
+
+    .LeftPart .SocialIcons{
+        gap: 20px;
+    }
+}
+
+@media (max-width: 425px) {
+    .SignIn{
+        width: 100%;
+    }
+}

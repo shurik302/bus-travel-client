@@ -1,0 +1,15 @@
+.SearchTickets {
+  display: flex;
+  flex-direction: column;
+  width: calc(90% - 40px);
+  margin: 60px 5%;
+  padding: 20px 20px;
+  border-radius: 8px;
+  background-color: var(--light-gray);
+  gap: 40px;
+}
+
+.date-section h2 {
+  font-size: var(--mbfs);
+  color: var(--mtcd);
+}

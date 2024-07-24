@@ -1,0 +1,188 @@
+.OnlineHelp {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	z-index: 1000;
+}
+
+.HelpButton {
+	background-color: var(--blue);
+	border: none;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.HelpButton i {
+	color: white;
+	font-size: 24px;
+}
+
+.HelpWindow {
+	position: absolute;
+	bottom: 70px;
+	right: 0;
+	width: 250px;
+	height: 400px;
+	background-color: white;
+	border: 1px solid var(--blue);
+	border-radius: 8px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: 0.5s ease;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.Header {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	background-color: var(--blue);
+	color: white;
+}
+
+.ConsultantIcon {
+	font-size: 20px;
+	margin-right: 10px;
+}
+
+.OnlineStatus {
+	width: 10px;
+	height: 10px;
+	background-color: #56ef00;
+	border-radius: 50%;
+	margin-left: auto;
+}
+
+.ChatBody {
+	flex: 1;
+	padding: 10px;
+	overflow-y: auto;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	scrollbar-width: thin;
+	scrollbar-color: var(--gray) transparent;
+}
+
+.ChatBody::-webkit-scrollbar {
+	width: 8px;
+}
+
+.ChatBody::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.ChatBody::-webkit-scrollbar-thumb {
+	background-color: var(--gray);
+	border-radius: 4px;
+}
+
+.ChatMessage {
+	max-width: 80%;
+	padding: 5px;
+	border-radius: 8px;
+	margin-bottom: 10px;
+	word-wrap: break-word;
+	font-size: var(--mls);
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.UserMessage {
+	background-color: #f0f0f0;
+	align-self: flex-end;
+}
+
+.ConsultantMessage {
+	background-color: var(--blue);
+	color: white;
+	align-self: flex-start;
+}
+
+.ChatInput {
+	display: flex;
+	padding: 10px;
+	border-top: 1px solid var(--blue);
+}
+
+.ChatInput input {
+	width: 70%;
+	flex: 1 1;
+	padding: 5px;
+	border: 1px solid var(--blue);
+	border-radius: 4px;
+	margin-right: 5px;
+}
+
+.ChatInput button {
+	padding: 5px 10px;
+	background-color: var(--blue);
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.ChatInput button i {
+	font-size: var(--mfs);
+}
+
+/* Media Queries */
+@media (max-width: 1920px) {
+	.HelpWindow {
+		width: 300px;
+		height: 400px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.HelpWindow {
+		width: 250px;
+		height: 350px;
+	}
+}
+
+@media (max-width: 768px) {
+	.HelpWindow {
+		width: 40vw;
+		height: 350px;
+	}
+
+	.HelpButton {
+		width: 35px;
+		height: 35px;
+	}
+
+	.HelpWindow {
+		bottom: 45px;
+	}
+}
+
+@media (max-width: 425px) {
+	.HelpWindow {
+		width: 60vw;
+		height: 350px;
+	}
+
+	.ChatMessage {
+		font-size: var(--mfs);
+	}
+}
+
+@media (max-width: 320px) {
+	.HelpWindow {
+		width: 60vw;
+		height: 300px;
+	}
+
+	.ChatMessage {
+		font-size: var(--mfs);
+	}
+}
