@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useCallback } from 'react';
 import { Context } from '../';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
@@ -6,36 +6,24 @@ import '../stylesheets/Account.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const getCityNameById = (id, language, cities) => {
-  const city = cities.find(city => city.id === id);
-  return city ? (language === 'ua' ? city.ukrainian : city.value) : '';
-};
-
 function Account() {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const now = moment();
   const [showAllActiveTrips, setShowAllActiveTrips] = useState(false);
   const [showAllPastTrips, setShowAllPastTrips] = useState(false);
   const [activeTrips, setActiveTrips] = useState([]);
   const [pastTrips, setPastTrips] = useState([]);
-  const [cities, setCities] = useState([]);
   const [isLoadingTrips, setIsLoadingTrips] = useState(true);
-  const [isLoadingCities, setIsLoadingCities] = useState(true);
   const [error, setError] = useState(null);
   const { store } = useContext(Context);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    store.checkAuth().then(() => {
-      fetchTrips();
-      fetchCities();
-    }).catch(err => {
-      console.error('Error during checkAuth:', err);
-      setError('Error during authentication');
-    });
-  }, [store]);
+  const isTripActive = useCallback((trip) => {
+    const tripArrivalDateTime = moment(trip.date_arrival).add(2, 'hours');
+    return now.isBefore(tripArrivalDateTime);
+  }, [now]);
 
-  const fetchTrips = async () => {
+  const fetchTrips = useCallback(async () => {
     try {
       const accessToken = localStorage.getItem('accessToken');
       if (!accessToken) {
@@ -50,10 +38,7 @@ function Account() {
         },
       });
 
-      console.log(response);
       const trips = response.data;
-      console.log('Fetched trips:', trips);
-
       const active = trips.filter(isTripActive).sort((a, b) => {
         return moment(a.date_departure) - moment(b.date_departure);
       });
@@ -70,24 +55,16 @@ function Account() {
     } finally {
       setIsLoadingTrips(false);
     }
-  };
+  }, [isTripActive]);
 
-  const fetchCities = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/api/cities');
-      setCities(response.data);
-    } catch (error) {
-      setError('Error fetching cities');
-      console.error('Error fetching cities:', error);
-    } finally {
-      setIsLoadingCities(false);
-    }
-  };
-
-  const isTripActive = (trip) => {
-    const tripArrivalDateTime = moment(trip.date_arrival).add(2, 'hours');
-    return now.isBefore(tripArrivalDateTime);
-  };
+  useEffect(() => {
+    store.checkAuth().then(() => {
+      fetchTrips();
+    }).catch(err => {
+      console.error('Error during checkAuth:', err);
+      setError('Error during authentication');
+    });
+  }, [store, fetchTrips]);
 
   const groupTripsByDate = (trips) => {
     return trips.reduce((groupedTrips, trip) => {
@@ -187,7 +164,7 @@ function Account() {
     }
   };
 
-  if (isLoadingTrips || isLoadingCities) {
+  if (isLoadingTrips) {
     return <div>Loading...</div>;
   }
 

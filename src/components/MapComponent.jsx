@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import axios from 'axios';
@@ -11,53 +11,20 @@ const MapComponent = ({ onCityClick }) => {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [selectedMarkers, setSelectedMarkers] = useState([]);
-  const [cities, setCities] = useState([]);
 
-  useEffect(() => {
-    if (map.current) return;
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [30.5234, 50.4501],
-      zoom: 6
-    });
-
-    map.current.on('dblclick', () => {
-      setSelectedMarkers([]);
-      document.querySelectorAll('.marker').forEach(marker => {
-        marker.style.backgroundColor = '#53bd25';
-      });
-      if (map.current.getSource('route')) {
-        map.current.removeLayer('route');
-        map.current.removeSource('route');
+  const handleMarkerClick = useCallback((location) => {
+    setSelectedMarkers(prev => {
+      if (prev.includes(location)) {
+        return prev.filter(marker => marker !== location);
+      } else {
+        const updatedMarkers = [...prev, location];
+        onCityClick(location); // Виклик onCityClick при натисканні на місто
+        return updatedMarkers;
       }
     });
+  }, [onCityClick]);
 
-    fetchCities();
-  }, []);
-
-  useEffect(() => {
-    if (selectedMarkers.length >= 2) {
-      fetchDirections(selectedMarkers.slice(-2));
-    }
-    highlightMarkers(selectedMarkers);
-    if (selectedMarkers.length >= 2) {
-      zoomToMarkers(selectedMarkers.slice(-2));
-    }
-  }, [selectedMarkers]);
-
-  const fetchCities = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/api/cities');
-      const cities = response.data;
-      setCities(cities);
-      addMarkers(cities);
-    } catch (error) {
-      console.error('Error fetching cities:', error);
-    }
-  };
-
-  const addMarkers = (cities) => {
+  const addMarkers = useCallback((cities) => {
     cities.forEach(location => {
       const el = document.createElement('div');
       el.className = 'marker';
@@ -85,19 +52,50 @@ const MapComponent = ({ onCityClick }) => {
         .setPopup(new mapboxgl.Popup({ offset: 25 }).setText(location.ukrainian))
         .addTo(map.current);
     });
-  };
+  }, [selectedMarkers, handleMarkerClick]);
 
-  const handleMarkerClick = (location) => {
-    setSelectedMarkers(prev => {
-      if (prev.includes(location)) {
-        return prev.filter(marker => marker !== location);
-      } else {
-        const updatedMarkers = [...prev, location];
-        onCityClick(location); // Виклик onCityClick при натисканні на місто
-        return updatedMarkers;
+  const fetchCities = useCallback(async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/cities');
+      const cities = response.data;
+      addMarkers(cities);
+    } catch (error) {
+      console.error('Error fetching cities:', error);
+    }
+  }, [addMarkers]);
+
+  useEffect(() => {
+    if (map.current) return;
+    map.current = new mapboxgl.Map({
+      container: mapContainer.current,
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [30.5234, 50.4501],
+      zoom: 6
+    });
+
+    map.current.on('dblclick', () => {
+      setSelectedMarkers([]);
+      document.querySelectorAll('.marker').forEach(marker => {
+        marker.style.backgroundColor = '#53bd25';
+      });
+      if (map.current.getSource('route')) {
+        map.current.removeLayer('route');
+        map.current.removeSource('route');
       }
     });
-  };
+
+    fetchCities();
+  }, [fetchCities]);
+
+  useEffect(() => {
+    if (selectedMarkers.length >= 2) {
+      fetchDirections(selectedMarkers.slice(-2));
+    }
+    highlightMarkers(selectedMarkers);
+    if (selectedMarkers.length >= 2) {
+      zoomToMarkers(selectedMarkers.slice(-2));
+    }
+  }, [selectedMarkers]);
 
   const highlightMarkers = (markers) => {
     document.querySelectorAll('.marker').forEach(marker => {

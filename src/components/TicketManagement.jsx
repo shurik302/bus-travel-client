@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import {
   Table,
@@ -17,15 +17,11 @@ import '../stylesheets/TicketManagement.css';
 const TicketManagement = () => {
   const [tickets, setTickets] = useState([]);
 
-  useEffect(() => {
-    fetchTickets();
-  }, []);
-
   const getAccessToken = () => {
     return localStorage.getItem('accessToken');
   };
 
-  const fetchTickets = async () => {
+  const fetchTickets = useCallback(async () => {
     try {
       const token = getAccessToken();
       if (!token) {
@@ -45,7 +41,11 @@ const TicketManagement = () => {
         console.error('Error fetching tickets:', error);
       }
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchTickets();
+  }, [fetchTickets]);
 
   const toggleTicketStatus = async (id) => {
     try {
@@ -62,26 +62,6 @@ const TicketManagement = () => {
       fetchTickets(); // Refresh tickets after updating status
     } catch (error) {
       console.error('Error toggling ticket status:', error);
-    }
-  };
-
-  const generateQRCode = async (id) => {
-    try {
-      const token = getAccessToken();
-      if (!token) {
-        throw new Error('No token found');
-      }
-
-      const response = await axios.get(`http://localhost:5000/api/qrcode/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      const qrCodeImage = response.data.qrCodeImage;
-      const newWindow = window.open();
-      newWindow.document.write(`<img src="${qrCodeImage}" alt="QR Code" />`);
-    } catch (error) {
-      console.error('Error generating QR code:', error);
     }
   };
 

@@ -40,7 +40,7 @@ const Home = () => {
           <div className='TR' />
           <a href='/map' className='MapSegment'>
             <div className='ImageMap'>
-              <img src={ImageMap} />
+              <img src={ImageMap} alt='fail'/>
             </div>
             <div className='TextMapSeg'>
               <div className='TextPartMap'>

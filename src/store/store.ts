@@ -79,8 +79,6 @@ export default class Store {
   async checkAuth() {
     this.setLoading(true);
     try {
-      const token = localStorage.getItem('refreshToken');
-
       this.setAuth(true);
     } catch (error) {
       console.error('Error during checkAuth:', error);

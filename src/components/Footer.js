@@ -55,11 +55,11 @@ function Footer() {
             <a href="tel:+380991111111">+380991111111</a>
           </div>
           <div className='SocialMedia'>
-            <a href=''><i className="fa-brands fa-instagram"></i></a>
-            <a href=''><i className="fa-brands fa-telegram"></i></a>
-            <a href=''><i className="fa-brands fa-facebook"></i></a>
-            <a href=''><i className="fa-brands fa-twitter"></i></a>
-            <a href=''><i className="fa-brands fa-tiktok"></i></a>
+            <button onClick={() => window.open('https://instagram.com', '_blank')}><i className="fa-brands fa-instagram"></i></button>
+            <button onClick={() => window.open('https://telegram.org', '_blank')}><i className="fa-brands fa-telegram"></i></button>
+            <button onClick={() => window.open('https://facebook.com', '_blank')}><i className="fa-brands fa-facebook"></i></button>
+            <button onClick={() => window.open('https://twitter.com', '_blank')}><i className="fa-brands fa-twitter"></i></button>
+            <button onClick={() => window.open('https://tiktok.com', '_blank')}><i className="fa-brands fa-tiktok"></i></button>
           </div>
         </div>
       </div>

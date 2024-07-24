@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import PhoneInput from 'react-phone-input-2';
@@ -66,17 +66,17 @@ const BuyTicket = () => {
     setLargeBaggage(Math.max(0, Math.min(20, largeBaggage + amount)));
   };
 
-  const validateInputs = () => {
+  const validateInputs = useCallback(() => {
     const isValidName = firstName.length > 0 && firstName.length <= 60;
     const isValidLastName = lastName.length > 0 && lastName.length <= 60;
     const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     const isValidPhone = phone.length > 0;
     setButtonDisabled(!(isValidName && isValidLastName && isValidEmail && isValidPhone));
-  };
+  }, [firstName, lastName, email, phone]);
 
   useEffect(() => {
     validateInputs();
-  }, [firstName, lastName, email, phone]);
+  }, [firstName, lastName, email, phone, validateInputs]);
 
   const calculatePrice = () => {
     const basePrice = language === 'ua' ? parseInt(travel.priceUA, 10) : parseInt(travel.priceEN, 10);
