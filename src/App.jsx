@@ -26,9 +26,19 @@ function App() {
   const store = useContext(StoreContext);
 
   useEffect(() => {
-    if(localStorage.getItem("token")){
+    if (localStorage.getItem("token")) {
       store.checkAuth();
     }
+    
+    // Виконання запиту до вашого сервера на Heroku
+    fetch('https://your-app-name.herokuapp.com/api/endpoint')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        // Ви можете зберегти отримані дані у стані вашого компоненту або контексті, якщо це необхідно
+      })
+      .catch(error => console.error('Error:', error));
+
   }, [store]);
 
   const router = createBrowserRouter(
