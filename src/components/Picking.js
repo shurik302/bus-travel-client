@@ -30,10 +30,6 @@ const Picking = () => {
     }
   }, [i18n.language]);
 
-  const getAccessToken = () => {
-    return localStorage.getItem('accessToken');
-  };
-
   useEffect(() => {
     const fetchCities = async () => {
       try {
