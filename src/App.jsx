@@ -31,7 +31,7 @@ function App() {
     }
     
     // Виконання запиту до вашого сервера на Heroku
-    fetch('https://your-app-name.herokuapp.com/api/endpoint')
+    fetch('https://bus-travel-4dba9713d4f4.herokuapp.com/api/endpoint')
       .then(response => response.json())
       .then(data => {
         console.log(data);
