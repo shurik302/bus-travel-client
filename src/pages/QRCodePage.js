@@ -16,7 +16,7 @@ const QRCodePage = () => {
       }
 
       try {
-        const response = await axios.get(`http://localhost:5000/api/qrcode/${token}`, {
+        const response = await axios.get(`https://bus-travel-4dba9713d4f4.herokuapp.com/api/qrcode/${token}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }

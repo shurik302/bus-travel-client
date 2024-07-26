@@ -21,7 +21,7 @@ function Travels() {
   useEffect(() => {
     const fetchCities = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/cities');
+        const response = await axios.get('https://bus-travel-4dba9713d4f4.herokuapp.com/api/cities');
         setCities(response.data);
       } catch (error) {
         console.error('Error fetching cities:', error);
@@ -30,7 +30,7 @@ function Travels() {
 
     const fetchTrips = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/tickets');
+        const response = await axios.get('https://bus-travel-4dba9713d4f4.herokuapp.com/api/tickets');
         setTrips(response.data);
       } catch (error) {
         console.error('Error fetching trips:', error);

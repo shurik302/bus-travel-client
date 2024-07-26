@@ -28,7 +28,7 @@ const TicketManagement = () => {
         throw new Error('No token found');
       }
 
-      const response = await axios.get('http://localhost:5000/api/tickets', {
+      const response = await axios.get('https://bus-travel-4dba9713d4f4.herokuapp.com/api/tickets', {
         headers: {
           Authorization: `Bearer ${token}`
         }
