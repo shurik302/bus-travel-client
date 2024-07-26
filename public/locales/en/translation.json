@@ -256,5 +256,6 @@
   "AlertUser": "Sorry, something was entered incorrectly, please check if you entered everything correctly and try again.",
   "AuthenticationError":"Error during authentication",
   "InvalidEmailError":"Error entering email address. Please make sure the email address is correct.",
-  "PasswordLengthError":"Error entering password. The password must be at least 8 characters and no more than 32 characters."
+  "PasswordLengthError":"Error entering password. The password must be at least 8 characters and no more than 32 characters.",
+  "TotalPrice": "Total price: "
 }
