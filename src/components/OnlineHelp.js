@@ -4,7 +4,6 @@ import '../stylesheets/OnlineHelp.css';
 function OnlineHelp() {
 	const [isOpen, setIsOpen] = useState(false);
 	const [messages, setMessages] = useState([]);
-	const [inputMessage, setInputMessage] = useState('');
 	const chatBodyRef = useRef(null);
 
 
