@@ -11,13 +11,14 @@ function Map() {
   const [to, setTo] = useState({ value: 4, label: t('Warsaw') });
   const [startDate, setStartDate] = useState(new Date());
   const [passengers, setPassengers] = useState(1);
-
   const [cities, setCities] = useState([]);
   const navigate = useNavigate();
 
+  const [setLocale] = useState('uk');
+
   useEffect(() => {
     setLocale(i18n.language === 'ua' ? 'ua' : 'en');
-  }, [i18n.language]);
+  }, [i18n.language, setLocale]);
   
   useEffect(() => {
     fetchCities();
