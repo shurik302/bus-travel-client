@@ -11,7 +11,6 @@ function Map() {
   const [to, setTo] = useState({ value: 4, label: t('Warsaw') });
   const [startDate, setStartDate] = useState(new Date());
   const [passengers, setPassengers] = useState(1);
-  const [locale, setLocale] = useState('uk');
 
   const [cities, setCities] = useState([]);
   const navigate = useNavigate();
