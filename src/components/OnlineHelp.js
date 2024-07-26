@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRef } from 'react'
 import '../stylesheets/OnlineHelp.css';
 import { useTranslation } from 'react-i18next';
 
