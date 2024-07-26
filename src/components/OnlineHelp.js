@@ -45,6 +45,18 @@ function OnlineHelp() {
 		}
 	};
 
+	useEffect(() => {
+		const script = document.createElement('script');
+		script.async = true;
+		script.src = 'https://embed.tawk.to/6691bc1e32dca6db2cae9ebb/default';
+		script.charset = 'UTF-8';
+		script.setAttribute('crossorigin', '*');
+		document.body.appendChild(script);
+		return () => {
+			document.body.removeChild(script);
+		};
+	}, []);
+
 	return (
 		<div className='OnlineHelp'>
 			<button className='HelpButton' onClick={toggleHelp}>
