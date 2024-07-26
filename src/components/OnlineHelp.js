@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react'
 import '../stylesheets/OnlineHelp.css';
 import { useTranslation } from 'react-i18next';
 
@@ -51,6 +51,15 @@ function OnlineHelp() {
 		script.src = 'https://embed.tawk.to/6691bc1e32dca6db2cae9ebb/default';
 		script.charset = 'UTF-8';
 		script.setAttribute('crossorigin', '*');
+
+		script.onload = () => {
+			console.log('Tawk.to script loaded successfully.');
+		};
+
+		script.onerror = (error) => {
+			console.error('Error loading Tawk.to script:', error);
+		};
+
 		document.body.appendChild(script);
 		return () => {
 			document.body.removeChild(script);
