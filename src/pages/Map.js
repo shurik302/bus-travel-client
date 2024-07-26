@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Picking from '../components/Picking';
-import MapComponent from '../components/MapComponent'; // Імпортуємо компонент карти
+import MapComponent from '../components/MapComponent'; // Импортируем компонент карты
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -14,12 +14,10 @@ function Map() {
   const [cities, setCities] = useState([]);
   const navigate = useNavigate();
 
-  const [setLocale] = useState('uk');
-
   useEffect(() => {
-    setLocale(i18n.language === 'ua' ? 'ua' : 'en');
-  }, [i18n.language, setLocale]);
-  
+    // Если вам нужно что-то делать с locale, добавьте код сюда
+  }, [i18n.language]);
+
   useEffect(() => {
     fetchCities();
   }, []);
@@ -42,7 +40,7 @@ function Map() {
 
   const cityOptions = cities.map(city => ({
     value: city.id,
-    label: i18n.language === 'ua' ? city.ukrainian : city.value
+    label: i18n.language === 'ua' ? city.ukrainian : city.name // Изменено city.value на city.name
   }));
 
   const handleSearch = () => {
