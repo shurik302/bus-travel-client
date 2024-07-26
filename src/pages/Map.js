@@ -18,7 +18,7 @@ function Map() {
 
   useEffect(() => {
     if (i18n.language === 'ua') {
-      setLocale('uk');
+      setLocale('ua');
     } else {
       setLocale('en');
     }
