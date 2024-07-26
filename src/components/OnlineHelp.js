@@ -46,24 +46,16 @@ function OnlineHelp() {
 	};
 
 	useEffect(() => {
-		const script = document.createElement('script');
-		script.async = true;
-		script.src = 'https://embed.tawk.to/6691bc1e32dca6db2cae9ebb/default';
-		script.charset = 'UTF-8';
-		script.setAttribute('crossorigin', '*');
-
-		script.onload = () => {
-			console.log('Tawk.to script loaded successfully.');
-		};
-
-		script.onerror = (error) => {
-			console.error('Error loading Tawk.to script:', error);
-		};
-
-		document.body.appendChild(script);
-		return () => {
-			document.body.removeChild(script);
-		};
+		// Додаємо скрипт Tawk.to
+		var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+		(function () {
+			var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+			s1.async = true;
+			s1.src = 'https://embed.tawk.to/6691bc1e32dca6db2cae9ebb/1i2kkdlpv';
+			s1.charset = 'UTF-8';
+			s1.setAttribute('crossorigin', '*');
+			s0.parentNode.insertBefore(s1, s0);
+		})();
 	}, []);
 
 	return (
