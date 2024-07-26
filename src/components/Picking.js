@@ -37,22 +37,13 @@ const Picking = () => {
   useEffect(() => {
     const fetchCities = async () => {
       try {
-        const token = getAccessToken();
-        if (!token) {
-          throw new Error('No token found');
-        }
-        const response = await axios.get('https://bus-travel-4dba9713d4f4.herokuapp.com/api/cities', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
+        const response = await axios.get('https://bus-travel-4dba9713d4f4.herokuapp.com/api/cities', {});
         const cities = response.data;
         const options = cities.map(city => ({
           value: city.value,
           label: i18n.language === 'ua' ? city.ukrainian : city.value
         }));
         setCityOptions(options);
-        // Установлюємо початкові значення для 'from' і 'to'
         setFrom(options[0]);
         setTo(options[1]);
       } catch (error) {
