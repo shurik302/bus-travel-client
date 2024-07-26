@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
 import '../stylesheets/OnlineHelp.css';
 import { useTranslation } from 'react-i18next';
 
@@ -27,6 +27,7 @@ function OnlineHelp() {
 		}, 60000);
 
 		return () => clearTimeout(timer);
+
 	}, [isOpen, messages]);
 
 	useEffect(() => {
@@ -48,14 +49,17 @@ function OnlineHelp() {
 	useEffect(() => {
 		// Додаємо скрипт Tawk.to
 		(function () {
-			var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-			var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+			window.Tawk_API = window.Tawk_API || {};
+			window.Tawk_LoadStart = new Date();
+			const s1 = document.createElement("script");
+			const s0 = document.getElementsByTagName("script")[0];
 			s1.async = true;
 			s1.src = 'https://embed.tawk.to/6691bc1e32dca6db2cae9ebb/1i2kkdlpv';
 			s1.charset = 'UTF-8';
 			s1.setAttribute('crossorigin', '*');
 			s0.parentNode.insertBefore(s1, s0);
 		})();
+
 	}, []);
 
 	return (
