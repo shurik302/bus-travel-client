@@ -52,6 +52,10 @@
     align-items: center;
 }
 
+.MiddleRightFooter .active{
+    color: var(--mtc) !important;
+}
+
 .NameSectionFooter i {
     margin-left: 10px;
     transition: transform 0.5s;
