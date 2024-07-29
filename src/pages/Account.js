@@ -202,7 +202,7 @@ function Account() {
               ) : (
                 <>
                   {renderTrips(groupedActiveTrips, showAllActiveTrips)}
-                  {!showAllActiveTrips && (
+                  {activeTrips.length > 5 && !showAllActiveTrips && (
                     <button className='ShowAllButton' onClick={handleShowAllActiveTrips}>{t('ShowAllActiveTrips')}</button>
                   )}
                 </>
