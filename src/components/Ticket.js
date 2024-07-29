@@ -23,11 +23,11 @@ const Ticket = ({ travel, passengers }) => {
       <div className='MainInfoTicket'>
         <div className='FromToTicket'>
           <div className='FromTicket'>
-            <span>{travel.from}</span>
+          <span>{language === 'ua' ? travel.fromUA : travel.fromEN}</span>
             <span>{language === 'ua' ? travel.fromLocationUA : travel.fromLocationEN}</span>
           </div>
           <div className='ToTicket'>
-            <span>{travel.to}</span>
+          <span>{language === 'ua' ? travel.toUA : travel.toEN}</span>
             <span>{language === 'ua' ? travel.toLocationUA : travel.toLocationEN}</span>
           </div>
         </div>
