@@ -61,7 +61,7 @@
 	color: var(--mtcb);
 }
 
-.FutureTravels{
+.FutureTravels {
 	display: flex;
 	flex-direction: row;
 	gap: 20px;
@@ -70,7 +70,7 @@
 }
 
 
-.FutureTravels > div{
+.FutureTravels>div {
 	display: flex;
 	flex-direction: row;
 	width: 100% !important;
@@ -293,7 +293,7 @@
 	align-items: center;
 	text-align: center;
 	gap: 10px;
-cursor: pointer;
+	cursor: pointer;
 }
 
 .ButtonLogout button i {
@@ -309,6 +309,11 @@ cursor: pointer;
 }
 
 @media (max-width: 1024px) {
+	.FutureTravels {
+		display: flex;
+		flex-direction: column;
+	}
+
 	.AllTickets {
 		flex-direction: column;
 	}

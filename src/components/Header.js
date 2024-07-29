@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../stylesheets/Header.css';
 import LanguageSwitcher from './LanguageSwitcher';
 import LogoBig from '../images/logo_big.png';
@@ -8,6 +8,7 @@ import { StoreContext } from '../store/store';
 function Header() {
   const { t } = useTranslation();
   const store = useContext(StoreContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
@@ -26,6 +27,14 @@ function Header() {
   const handleLoginClick = () => {
     console.log("Navigating to login page");
     window.location.href = '/Authorisation'; // Redirect to login page
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   console.log("Current auth state:", store.isAuth);
@@ -63,6 +72,22 @@ function Header() {
 
         <div className="LanguageSwitcher">
           <LanguageSwitcher />
+        </div>
+
+        <div className='BurgerButton' onClick={toggleMenu}>
+          <i className="fa-solid fa-bars"></i>
+        </div>
+
+        <div className={`links-container ${isMenuOpen ? 'visible' : ''}`}>
+          <div className='close-button' onClick={closeMenu}>
+            <i className="fa-solid fa-xmark"></i>
+          </div>
+          <div className='links'>
+            <a href="/map">{t('F_Link')}</a>
+            <a href="/travels">{t('S_Link')}</a>
+            <a href="/routes">{t('T_Link')}</a>
+            <a href="/help">{t('Th_Link')}</a>
+          </div>
         </div>
       </div>
     </div>

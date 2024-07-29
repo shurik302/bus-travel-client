@@ -32,6 +32,7 @@
 	flex-direction: row;
 	align-items: center;
 	gap: 20px;
+	
 }
 
 .links a {
@@ -52,6 +53,7 @@
 	justify-content: center;
 	align-items: center;
 	margin-left: 5%;
+	display: none;
 }
 
 .UserAndLang {
@@ -87,6 +89,10 @@
 
 .fa-solid {
 	font-size: var(--mbfs);
+}
+
+.close-button{
+	display: none;
 }
 
 @media (max-width: 1024px) {
@@ -135,6 +141,7 @@
 		top: 20px;
 		right: 45px;
 		cursor: pointer;
+		display: block;
 	}
 
 	.links-container .links {
@@ -160,17 +167,12 @@
 	.CurrentTranslation {
 		width: 54px !important;
 	}
-
-	
 }
 
 @media (max-width: 425px) {
-
 	.links-container {
 		width: 100%;
 	}
-
-	
 
 	.NotLogged a:nth-child(1) {
 		display: none;
@@ -179,5 +181,4 @@
 	.NotLogged a:nth-child(2) {
 		display: block;
 	}
-
 }
