@@ -18,14 +18,9 @@ const BuyTicket = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [buttonDisabled, setButtonDisabled] = useState(true);
-  const [cities, setCities] = useState([]);
 
   const fromToTicketRef = useRef(null);
   const routeSymbolRef = useRef(null);
-
-  useEffect(() => {
-    fetchCities();
-  }, []);
 
   useEffect(() => {
     if (fromToTicketRef.current && routeSymbolRef.current) {
@@ -33,26 +28,6 @@ const BuyTicket = () => {
       routeSymbolRef.current.style.height = `${height}px`;
     }
   }, []);
-
-  const fetchCities = async () => {
-    try {
-      const token = localStorage.getItem('accessToken');
-
-      if (!token) {
-        throw new Error('No token found');
-      }
-
-      const response = await axios.get('https://bus-travel-4dba9713d4f4.herokuapp.com/api/cities', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        }
-      });
-      setCities(response.data);
-    } catch (error) {
-      console.error('Error fetching cities:', error);
-    }
-  };
-
 
   const handleSmallBaggageChange = (amount) => {
     setSmallBaggage(Math.max(0, Math.min(40, smallBaggage + amount)));
