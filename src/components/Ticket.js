@@ -1,41 +1,12 @@
-// Ticket.js
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import '../stylesheets/Ticket.css';
-import axios from 'axios';
-
 
 const Ticket = ({ travel, passengers }) => {
   const { t, i18n } = useTranslation();
   const language = i18n.language;
   const navigate = useNavigate();
-  const [cities, setCities] = useState([]);
-
-  const getAccessToken = () => {
-    return localStorage.getItem('accessToken');
-  };
-
-  useEffect(() => {
-    const fetchCities = async () => {
-      try {
-        const token = getAccessToken();
-        if (!token) {
-          throw new Error('No token found');
-        }
-        const response = await axios.get('https://bus-travel-4dba9713d4f4.herokuapp.com/api/cities', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-        setCities(response.data);
-      } catch (error) {
-        console.error('Error fetching cities:', error);
-      }
-    };
-
-    fetchCities();
-  }, []);
 
   const handleBuyTicket = () => {
     navigate('/buy-ticket', {
