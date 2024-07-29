@@ -5,10 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import '../stylesheets/Ticket.css';
 import axios from 'axios';
 
-const getCityNameById = (id, language, cities) => {
-  const city = cities.find(city => city.id === id);
-  return city ? (language === 'ua' ? city.ukrainian : city.value) : '';
-};
 
 const Ticket = ({ travel, passengers }) => {
   const { t, i18n } = useTranslation();
@@ -56,11 +52,11 @@ const Ticket = ({ travel, passengers }) => {
       <div className='MainInfoTicket'>
         <div className='FromToTicket'>
           <div className='FromTicket'>
-            <span>{getCityNameById(travel.from, language, cities)}</span>
+            <span>{travel.from}</span>
             <span>{language === 'ua' ? travel.fromLocationUA : travel.fromLocationEN}</span>
           </div>
           <div className='ToTicket'>
-            <span>{getCityNameById(travel.to, language, cities)}</span>
+            <span>{travel.to}</span>
             <span>{language === 'ua' ? travel.toLocationUA : travel.toLocationEN}</span>
           </div>
         </div>
