@@ -30,10 +30,6 @@ th {
   background-color: #f4f4f4;
 }
 
-.active {
-  color: green;
-}
-
 .inactive {
   color: red;
 }
