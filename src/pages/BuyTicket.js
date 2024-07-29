@@ -53,10 +53,6 @@ const BuyTicket = () => {
     }
   };
 
-  const getCityNameById = (id, language) => {
-    const city = cities.find(city => city.id === id);
-    return city ? (language === 'ua' ? city.ukrainian : city.value) : '';
-  };
 
   const handleSmallBaggageChange = (amount) => {
     setSmallBaggage(Math.max(0, Math.min(40, smallBaggage + amount)));
@@ -267,13 +263,13 @@ const BuyTicket = () => {
             </div>
             <div className='FromToTicketTicketBuyVertical' ref={fromToTicketRef}>
               <div className='FromTicketBuy'>
-                <span className='CityInfoTicketBuy'>{getCityNameById(travel.from, language)}</span>
-                <span className='StreetInfoTicketBuy'>{language === 'ua' ? travel.additionatlinfoFromUA : travel.additionatlinfoFromEN}</span>
+                <span className='CityInfoTicketBuy'>{language === 'ua' ? travel.fromUA : travel.fromEN}</span>
+                <span className='StreetInfoTicketBuy'>{language === 'ua' ? travel.fromLocationUA : travel.fromLocationEN}</span>
                 <span className='DepartureInfoTicketBuy'>{travel.departure}</span>
               </div>
               <div className='ToTicketBuy'>
-                <span className='CityInfoTicketBuy'>{getCityNameById(travel.to, language)}</span>
-                <span className='StreetInfoTicketBuy'>{language === 'ua' ? travel.additionatlinfoToUA : travel.additionatlinfoToEN}</span>
+                <span className='CityInfoTicketBuy'>{language === 'ua' ? travel.toUA : travel.toEN}</span>
+                <span className='StreetInfoTicketBuy'>{language === 'ua' ? travel.toLocationUA : travel.toLocationEN}</span>
                 <span className='DepartureInfoTicketBuy'>{travel.arrival}</span>
               </div>
             </div>
