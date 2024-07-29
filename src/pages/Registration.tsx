@@ -4,6 +4,8 @@ import { Context } from '..';
 import { useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import '../stylesheets/Registration.css';
+import { Helmet } from 'react-helmet-async';
+
 
 const Registration: FC = () => {
   const { t } = useTranslation();
@@ -52,6 +54,9 @@ const Registration: FC = () => {
 
   return (
     <div className='Registration'>
+      <Helmet>
+        <title>{t('titles.registration')}</title> {/* Установите заголовок страницы */}
+      </Helmet>
       <div className='LeftPart'>
         <div className='SignIn'>
           <h2>{t('Registration')}</h2>

@@ -1,11 +1,16 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next';
 import '../stylesheets/InfoAboutUs.css'
+import { Helmet } from 'react-helmet-async';
+
 
 function InfoAboutUs() {
   const { t } = useTranslation();
   return (
     <div className='InfoAboutUs'>
+      <Helmet>
+        <title>{t('titles.info-about-us')}</title> {/* Установите заголовок страницы */}
+      </Helmet>
       <div className='MainPartIAU'>
         <div className='WelcomeAbout'>
           <h2 className='WhoWe'>{t('WhoWe')}</h2>

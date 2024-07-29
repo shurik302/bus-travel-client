@@ -14,12 +14,13 @@ import Help from './pages/Help.js';
 import Rules from './pages/Rules.js';
 import InfoAboutUs from './pages/InfoAboutUs.js';
 import PrivacyPolicy from './pages/PrivacyPolicy.js';
-import Authorisation from './pages/Authorisation.js'; // Сторінка авторизації
-import Registration from './pages/Registration.tsx'; // Сторінка реєстрації
+import Authorisation from './pages/Authorisation.js'; 
+import Registration from './pages/Registration.tsx'; 
 import SearchTickets from './pages/SearchTickets.js';
 import BuyTicket from './pages/BuyTicket.js';
 import AdminPanel from './pages/AdminPanel';
-import QRCodePage from './pages/QRCodePage';
+import PageTitle from './components/PageTitle'; // Импортируйте новый компонент
+import { HelmetProvider } from 'react-helmet-async'; // Импортируйте HelmetProvider
 import './i18n';
 
 function App() {
@@ -29,50 +30,49 @@ function App() {
     if (localStorage.getItem("token")) {
       store.checkAuth();
     }
-    
-    // Виконання запиту до вашого сервера на Heroku
+
+    // Fetch data from your server on Heroku
     fetch('https://bus-travel-4dba9713d4f4.herokuapp.com/api/endpoint')
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        // Ви можете зберегти отримані дані у стані вашого компоненту або контексті, якщо це необхідно
       })
       .catch(error => console.error('Error:', error));
-
   }, [store]);
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
-        <Route path="/" element={<Home />} />
-        <Route path="/map" element={<Map />} />
-        <Route path="/travels" element={<Travels />} />
-        <Route path="/routes" element={<Routes />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/help" element={<Help />} />
-        <Route path="/rules" element={<Rules />} />
-        <Route path="/info-about-us" element={<InfoAboutUs />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/registration" element={<Registration />} /> {/* Шлях для сторінки реєстрації */}
-        <Route path="/authorisation" element={<Authorisation />} /> {/* Шлях для сторінки авторизації */}
-        <Route path="/search" element={<SearchTickets />} />
-        <Route path="/buy-ticket" element={<BuyTicket />} />
-        <Route path="/adminPanel" element={<AdminPanel />} />
-        <Route path="/qrcode/:token" element={<QRCodePage />} />
+        <Route path="/" element={<><PageTitle /><Home /></>} />
+        <Route path="/map" element={<><PageTitle /><Map /></>} />
+        <Route path="/travels" element={<><PageTitle /><Travels /></>} />
+        <Route path="/routes" element={<><PageTitle /><Routes /></>} />
+        <Route path="/account" element={<><PageTitle /><Account /></>} />
+        <Route path="/help" element={<><PageTitle /><Help /></>} />
+        <Route path="/rules" element={<><PageTitle /><Rules /></>} />
+        <Route path="/info-about-us" element={<><PageTitle /><InfoAboutUs /></>} />
+        <Route path="/privacy-policy" element={<><PageTitle /><PrivacyPolicy /></>} />
+        <Route path="/registration" element={<><PageTitle /><Registration /></>} />
+        <Route path="/authorisation" element={<><PageTitle /><Authorisation /></>} />
+        <Route path="/search" element={<><PageTitle /><SearchTickets /></>} />
+        <Route path="/buy-ticket" element={<><PageTitle /><BuyTicket /></>} />
+        <Route path="/adminPanel" element={<><PageTitle /><AdminPanel /></>} />
       </>
     )
   );
 
   return (
     <StoreContext.Provider value={store}>
-      <div className="App">
-        <Header />
-        <div className="content">
-          <RouterProvider router={router} />
+      <HelmetProvider>
+        <div className="App">
+          <Header />
+          <div className="content">
+            <RouterProvider router={router} />
+          </div>
+          <OnlineHelp />
+          <Footer />
         </div>
-        <OnlineHelp />
-        <Footer />
-      </div>
+      </HelmetProvider>
     </StoreContext.Provider>
   );
 }

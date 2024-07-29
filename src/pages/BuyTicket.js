@@ -5,6 +5,7 @@ import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import '../stylesheets/BuyTicket.css';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const BuyTicket = () => {
   const { t } = useTranslation();
@@ -117,7 +118,32 @@ const BuyTicket = () => {
       alert('Ticket created successfully');
     } catch (error) {
       console.error('Error creating ticket:', error);
-      alert('Error creating ticket');
+
+      if (error.response) {
+        // Сервер відповів з кодом стану, який не знаходиться в діапазоні 2xx
+        switch (error.response.status) {
+          case 401:
+            alert('You are not authorized. Please log in.');
+            break;
+          case 403:
+            alert('You do not have permission to perform this action.');
+            break;
+          case 400:
+            alert('Bad request. Please check the input data.');
+            break;
+          case 500:
+            alert('Internal server error. Please try again later.');
+            break;
+          default:
+            alert('An unexpected error occurred. Please try again.');
+        }
+      } else if (error.request) {
+        // Запит був зроблений, але відповіді не отримано
+        alert('No response received from the server. Please check your network connection.');
+      } else {
+        // Щось сталося при налаштуванні запиту, що спричинило помилку
+        alert(`Error: ${error.message}`);
+      }
     }
   };
 
@@ -125,6 +151,9 @@ const BuyTicket = () => {
 
   return (
     <div className='BuyTicketUser'>
+      <Helmet>
+        <title>{t('titles.buy-ticket')}</title> {/* Установите заголовок страницы */}
+      </Helmet>
       <div className='InfoBuyTicketUser'>
         <h1>{t('BuyTicketTextUser')}</h1>
       </div>

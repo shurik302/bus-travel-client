@@ -10,12 +10,14 @@ import {
   Paper,
   Button,
   Container,
-  Typography
+  Typography,
+  TextField
 } from '@mui/material';
 import '../stylesheets/TicketManagement.css';
 
 const TicketManagement = () => {
   const [tickets, setTickets] = useState([]);
+  const [searchEmail, setSearchEmail] = useState('');
 
   const getAccessToken = () => {
     return localStorage.getItem('accessToken');
@@ -54,7 +56,7 @@ const TicketManagement = () => {
         throw new Error('No token found');
       }
 
-      await axios.put(`http://localhost:5000/api/tickets/toggle/${id}`, null, {
+      await axios.put(`https://bus-travel-4dba9713d4f4.herokuapp.com/api/tickets/toggle/${id}`, null, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -65,9 +67,21 @@ const TicketManagement = () => {
     }
   };
 
+  const filteredTickets = tickets.filter(ticket => 
+    ticket.email.toLowerCase().includes(searchEmail.toLowerCase())
+  );
+
   return (
     <Container>
       <Typography variant="h4" gutterBottom>Управління квитками</Typography>
+      <TextField
+        label="Пошук за електронною поштою"
+        variant="outlined"
+        fullWidth
+        value={searchEmail}
+        onChange={(e) => setSearchEmail(e.target.value)}
+        style={{ marginBottom: '20px' }}
+      />
       <TableContainer width="100%" component={Paper}>
         <Table>
           <TableHead>
@@ -90,7 +104,7 @@ const TicketManagement = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {tickets.map(ticket => (
+            {filteredTickets.map(ticket => (
               <TableRow key={ticket._id}>
                 <TableCell>{ticket.from}</TableCell>
                 <TableCell>{ticket.to}</TableCell>

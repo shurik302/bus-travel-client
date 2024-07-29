@@ -4,8 +4,11 @@ import MapComponent from '../components/MapComponent'; // Импортируем
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
+
 
 function Map() {
+  
   const { t, i18n } = useTranslation();
   const [from, setFrom] = useState({ value: 3, label: t('Kyiv') });
   const [to, setTo] = useState({ value: 4, label: t('Warsaw') });
@@ -86,6 +89,9 @@ function Map() {
 
   return (
     <div className='Map'>
+      <Helmet>
+        <title>{t('titles.map')}</title> {/* Установите заголовок страницы */}
+      </Helmet>
       <div className='MainContent'>
         <div className='Picking'>
           <Picking

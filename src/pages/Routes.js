@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import '../stylesheets/Routes.css';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
+
 
 function Routes() {
   const { t, i18n } = useTranslation();
@@ -22,6 +24,9 @@ function Routes() {
 
   return (
     <div className='RoutesPage'>
+      <Helmet>
+        <title>{t('titles.routes')}</title> {/* Установите заголовок страницы */}
+      </Helmet>
       <div className='MainInfoPagesRoutes'>
         <div className='InformationRoutesPage'>
           <span>{t('InformationRoutesPage')}</span>

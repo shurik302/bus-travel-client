@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { Context } from '..';
 import '../stylesheets/Authorisation.css';
+import { Helmet } from 'react-helmet-async';
 
 function Authorisation() {
   const { t } = useTranslation();
@@ -57,6 +58,9 @@ function Authorisation() {
 
   return (
     <div className='Authorisation'>
+      <Helmet>
+        <title>{t('titles.authorisation')}</title> {/* Установите заголовок страницы */}
+      </Helmet>
       <div className='LeftPart'>
         <div className='SignIn'>
           <h2>{t('SignIn')}</h2>

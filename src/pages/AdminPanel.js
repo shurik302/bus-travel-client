@@ -3,8 +3,11 @@ import Sidebar from '../components/Sidebar';
 import "../components/Sidebar.css";
 import MainContent from '../components/MainContent';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 
 function AdminPanel() {
+  const { t } = useTranslation();
   const [section, setSection] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -46,6 +49,9 @@ function AdminPanel() {
 
   return (
     <div className='AdminPanel'>
+      <Helmet>
+        <title>{t('titles.admin-panel')}</title> {/* Установите заголовок страницы */}
+      </Helmet>
       <MainContent section={section} />
       <Sidebar onSelectSection={onSelectSection} />
     </div>

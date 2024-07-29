@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import '../stylesheets/SearchTickets.css';
 import Ticket from '../components/Ticket';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
+
 
 function SearchTickets() {
   const { t } = useTranslation();
@@ -82,6 +84,9 @@ function SearchTickets() {
 
   return (
     <div className='SearchTickets'>
+      <Helmet>
+        <title>{t('titles.search')}</title> {/* Установите заголовок страницы */}
+      </Helmet>
       {isLoading ? (
         <div>{t('Loading...')}</div>
       ) : (

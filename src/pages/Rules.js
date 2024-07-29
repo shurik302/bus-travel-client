@@ -1,11 +1,16 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../stylesheets/Rules.css';
+import { Helmet } from 'react-helmet-async';
+
 
 function Rules() {
   const { t } = useTranslation();
   return (
     <div className='Rules'>
+      <Helmet>
+        <title>{t('titles.rules')}</title> {/* Установите заголовок страницы */}
+      </Helmet>
       <div className='MainPart'>
         <span className='Heading'>
           {t('Heading_Rules_1')}

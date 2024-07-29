@@ -5,6 +5,8 @@ import moment from 'moment';
 import '../stylesheets/Account.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+
 
 function Account() {
   const { t } = useTranslation();
@@ -106,6 +108,9 @@ function Account() {
 
     return tripsToShow.map((trip, index) => (
       <div key={index} className='Trip'>
+        <Helmet>
+          <title>{t('titles.account')}</title> {/* Установите заголовок страницы */}
+        </Helmet>
         <div className='MainInfo'>
           <div className='Time'>
             <div className='TimeDep'>

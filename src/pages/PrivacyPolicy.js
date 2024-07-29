@@ -1,11 +1,16 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import '../stylesheets/PrivacyPolicy.css';
+import { Helmet } from 'react-helmet-async';
+
 
 function PrivacyPolicy() {
   const { t } = useTranslation();
   return (
     <div className='PrivacyPolicy'>
+      <Helmet>
+        <title>{t('titles.privacy-policy')}</title> {/* Установите заголовок страницы */}
+      </Helmet>
       <div className='MainPart'>
         <span className='Heading'>
           {t('Heading1')}

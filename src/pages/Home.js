@@ -3,11 +3,15 @@ import Picking from '../components/Picking';
 import { useTranslation } from 'react-i18next';
 import '../stylesheets/Home.css';
 import ImageMap from '../background_images/ImageMap.png';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
   const { t } = useTranslation();
   return (
     <div className='Home'>
+      <Helmet>
+        <title>{t('titles.home')}</title> {/* Установите заголовок страницы */}
+      </Helmet>
       <div className='MainContent'>
         <div className='WelcomminPart'>
           <div className='TextWelcommingPart'>

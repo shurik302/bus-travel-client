@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import '../stylesheets/Travels.css';
 import SadSmile from '../images/sad_smile.png';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
+
 
 const getCityNameById = (id, language, cities) => {
   const city = cities.find(city => city.id === id);
@@ -72,6 +74,9 @@ function Travels() {
 
   return (
     <div className='Travels'>
+      <Helmet>
+        <title>{t('titles.travels')}</title> {/* Установите заголовок страницы */}
+      </Helmet>
       <div className='Welcome'><span>{t('WelcomeTravel')}</span></div>
       <div className='FutureTravels FutureTravelsPage'>
         <div className='Information'><span>{t('InformationTravels')}</span></div>
