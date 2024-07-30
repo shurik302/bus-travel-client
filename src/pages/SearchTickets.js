@@ -39,21 +39,22 @@ function SearchTickets() {
 
         const filteredTravels = travels.filter(travel => {
           const travelDate = new Date(travel.date_departure);
-          return travelDate >= searchStartDate && travel.from === from && travel.to === to;
+          travelDate.setHours(0, 0, 0, 0);
+          return travelDate.getTime() === searchStartDate.getTime() && travel.fromEN === from && travel.toEN === to;
         });
 
         console.log('Filtered travels:', filteredTravels);
 
         filteredTravels.sort((a, b) => {
-          const dateA = new Date(`${a.date_departure}T${a.departure}`);
-          const dateB = new Date(`${b.date_departure}T${b.departure}`);
+          const dateA = new Date(`${a.date_departure.split('T')[0]}T${a.departure}`);
+          const dateB = new Date(`${b.date_departure.split('T')[0]}T${b.departure}`);
           return dateA - dateB;
         });
 
         console.log('Sorted travels:', filteredTravels);
 
         const grouped = filteredTravels.reduce((acc, travel) => {
-          const dateKey = travel.date_departure;
+          const dateKey = travel.date_departure.split('T')[0];
           if (!acc[dateKey]) {
             acc[dateKey] = [];
           }
@@ -87,7 +88,7 @@ function SearchTickets() {
   return (
     <div className='SearchTickets'>
       <Helmet>
-        <title>{t('titles.search')}</title> {/* Установите заголовок страницы */}
+        <title>{t('titles.search')}</title>
       </Helmet>
       {isLoading ? (
         <div>{t('Loading...')}</div>
