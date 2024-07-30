@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
 import "../components/Sidebar.css";
 import MainContent from '../components/MainContent';
-import axios from 'axios';
 
 function AdminPanel() {
   const [section, setSection] = useState('');
@@ -11,14 +10,15 @@ function AdminPanel() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchUserRole = async () => {
+    const checkUserRole = () => {
       try {
-        const user = JSON.parse(localStorage.getItem('user')); // Parse the JSON string into an object
-        console.log('User ID from localStorage:', user.id); // Access the id property
-        const response = await axios.get(`/api/role?userId=${user.id}`);
-        console.log('Current user role:', response.data.role);
-        if (response.data.role === 'admin') {
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        console.log('User from localStorage:', user);
+
+        if (user.email === 'admin@example.com') { // Замініть на фактичну адресу адміністратора
           setIsAdmin(true);
+        } else {
+          setIsAdmin(false);
         }
       } catch (error) {
         console.error('Error fetching user role:', error);
@@ -28,7 +28,7 @@ function AdminPanel() {
       }
     };
 
-    fetchUserRole();
+    checkUserRole();
   }, []);
 
   const onSelectSection = (sectionName) => {
