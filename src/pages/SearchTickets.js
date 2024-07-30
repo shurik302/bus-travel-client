@@ -35,19 +35,17 @@ function SearchTickets() {
         console.log('Fetched travels:', travels);
 
         const searchStartDate = new Date(startDate);
-        searchStartDate.setHours(0, 0, 0, 0);
 
         const filteredTravels = travels.filter(travel => {
           const travelDate = new Date(travel.date_departure);
-          travelDate.setHours(0, 0, 0, 0);
-          return travelDate.getTime() === searchStartDate.getTime() && travel.fromEN === from && travel.toEN === to;
+          return travelDate >= searchStartDate && travel.fromEN === from && travel.toEN === to;
         });
 
         console.log('Filtered travels:', filteredTravels);
 
         filteredTravels.sort((a, b) => {
-          const dateA = new Date(`${a.date_departure.split('T')[0]}T${a.departure}`);
-          const dateB = new Date(`${b.date_departure.split('T')[0]}T${b.departure}`);
+          const dateA = new Date(a.date_departure);
+          const dateB = new Date(b.date_departure);
           return dateA - dateB;
         });
 
