@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from '../components/Sidebar';
-import '../components/Sidebar.css';
+import "../components/Sidebar.css";
 import MainContent from '../components/MainContent';
 import axios from 'axios';
 
@@ -13,13 +13,9 @@ function AdminPanel() {
   useEffect(() => {
     const fetchUserRole = async () => {
       try {
-        const accessToken = localStorage.getItem('accessToken');
-        console.log('Access token from localStorage:', accessToken);
-        const response = await axios.get('/api/role', {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
+        const userId = localStorage.getItem('userId'); // Зберігайте userId замість токена
+        console.log('User ID from localStorage:', userId);
+        const response = await axios.get(`/api/role?userId=${userId}`);
         console.log('Current user role:', response.data.role);
         if (response.data.role === 'admin') {
           setIsAdmin(true);
