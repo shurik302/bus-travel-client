@@ -1,4 +1,3 @@
-// SearchTickets.js
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -6,7 +5,6 @@ import '../stylesheets/SearchTickets.css';
 import Ticket from '../components/Ticket';
 import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
-
 
 function SearchTickets() {
   const { t } = useTranslation();
@@ -34,6 +32,8 @@ function SearchTickets() {
 
         const travels = response.data;
 
+        console.log('Fetched travels:', travels);
+
         const searchStartDate = new Date(startDate);
         searchStartDate.setHours(0, 0, 0, 0);
 
@@ -42,11 +42,15 @@ function SearchTickets() {
           return travelDate >= searchStartDate;
         });
 
+        console.log('Filtered travels:', filteredTravels);
+
         filteredTravels.sort((a, b) => {
           const dateA = new Date(`${a.date_departure}T${a.departure}`);
           const dateB = new Date(`${b.date_departure}T${b.departure}`);
           return dateA - dateB;
         });
+
+        console.log('Sorted travels:', filteredTravels);
 
         const grouped = filteredTravels.reduce((acc, travel) => {
           const dateKey = travel.date_departure;
@@ -56,6 +60,8 @@ function SearchTickets() {
           acc[dateKey].push(travel);
           return acc;
         }, {});
+
+        console.log('Grouped travels:', grouped);
 
         setGroupedTravels(grouped);
       } catch (error) {
@@ -68,10 +74,6 @@ function SearchTickets() {
 
     fetchTravels();
   }, [from, to, startDate]);
-
-  useEffect(() => {
-    console.log('Grouped travels:', groupedTravels);
-  }, [groupedTravels]);
 
   const formatDate = (dateString) => {
     const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
