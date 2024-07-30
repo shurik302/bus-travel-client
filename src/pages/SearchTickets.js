@@ -39,7 +39,7 @@ function SearchTickets() {
 
         const filteredTravels = travels.filter(travel => {
           const travelDate = new Date(travel.date_departure);
-          return travelDate >= searchStartDate;
+          return travelDate >= searchStartDate && travel.from === from && travel.to === to;
         });
 
         console.log('Filtered travels:', filteredTravels);

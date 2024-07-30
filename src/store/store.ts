@@ -10,12 +10,22 @@ interface AuthResponse {
 }
 
 export default class Store {
-  user: IUser = JSON.parse(localStorage.getItem('user') || '{}');
+  user: IUser = this.getInitialUser();
   isAuth = !!localStorage.getItem('accessToken');
   isLoading = false;
 
   constructor() {
     makeAutoObservable(this);
+  }
+
+  private getInitialUser(): IUser {
+    try {
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      return user && user.email ? user : { email: '', role: '', isActivated: false, id: '' };
+    } catch (error) {
+      console.error('Error parsing user from localStorage:', error);
+      return { email: '', role: '', isActivated: false, id: '' };
+    }
   }
 
   setAuth(bool: boolean) {
@@ -70,7 +80,9 @@ export default class Store {
       await AuthService.logout();
       this.setAuth(false);
       this.setUser({ email: '', role: '', isActivated: false, id: '' });
-      localStorage.clear(); // Clear all localStorage
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
+      localStorage.removeItem('user');
     } catch (error) {
       console.error('Error during logout:', error);
     }
@@ -79,7 +91,15 @@ export default class Store {
   async checkAuth() {
     this.setLoading(true);
     try {
-      this.setAuth(true);
+      // Реальний запит для перевірки токенів або оновлення сесії
+      const accessToken = localStorage.getItem('accessToken');
+      if (accessToken) {
+        // Можливо, тут буде запит до сервера для підтвердження токена
+        this.setAuth(true);
+      } else {
+        this.setAuth(false);
+        this.setUser({ email: '', role: '', isActivated: false, id: '' });
+      }
     } catch (error) {
       console.error('Error during checkAuth:', error);
       this.setAuth(false);
@@ -89,7 +109,6 @@ export default class Store {
     }
   }
 }
-
 
 export const store = new Store();
 export const StoreContext = React.createContext(store);
