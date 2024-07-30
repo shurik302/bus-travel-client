@@ -13,9 +13,9 @@ function AdminPanel() {
   useEffect(() => {
     const fetchUserRole = async () => {
       try {
-        const userId = localStorage.getItem('userId'); // Зберігайте userId замість токена
-        console.log('User ID from localStorage:', userId);
-        const response = await axios.get(`/api/role?userId=${userId}`);
+        const user = localStorage.getItem('user'); // Зберігайте userId замість токена
+        console.log('User ID from localStorage:', user.id);
+        const response = await axios.get(`/api/role?userId=${user.id}`);
         console.log('Current user role:', response.data.role);
         if (response.data.role === 'admin') {
           setIsAdmin(true);
