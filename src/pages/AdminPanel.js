@@ -15,7 +15,7 @@ function AdminPanel() {
         const user = JSON.parse(localStorage.getItem('user') || '{}');
         console.log('User from localStorage:', user);
 
-        if (user.email === 'admin@example.com') { // Замініть на фактичну адресу адміністратора
+        if (user.email === 'balabuha1988@gmail.com' || user.email === 'terehovvlad29@gmail.com' || user.email === 'bus_travel_admin1@gmail.com') { // Замініть на фактичну адресу адміністратора
           setIsAdmin(true);
         } else {
           setIsAdmin(false);
