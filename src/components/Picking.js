@@ -36,7 +36,7 @@ const Picking = () => {
         const response = await axios.get('https://bus-travel-4dba9713d4f4.herokuapp.com/api/cities', {});
         const cities = response.data;
         const options = cities.map(city => ({
-          value: city.value,
+          value: city.value,  // Используем название города
           label: i18n.language === 'ua' ? city.ukrainian : city.value
         }));
         setCityOptions(options);
@@ -71,8 +71,8 @@ const Picking = () => {
     });
     navigate('/search', {
       state: {
-        from: from.value,
-        to: to.value,
+        from: from.value,  // Передаем название города
+        to: to.value,      // Передаем название города
         startDate: startDate.toISOString(),
         passengers: passengers
       }

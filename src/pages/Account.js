@@ -218,7 +218,7 @@ function Account() {
             <div className='Travels TravelsAcc'>
               <div className='TravelsInfo TravelsInfoAcc'>
                 <span className='TravelsNowInfoText'>
-                  {t("TravelsNowInfoText")}
+                  {t("TravelsPastInfoText")}
                 </span>
               </div>
               {pastTrips.length === 0 ? (
