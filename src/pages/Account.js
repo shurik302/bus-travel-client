@@ -223,7 +223,7 @@ function Account() {
               </div>
               {pastTrips.length === 0 ? (
                 <div className='ProposeBuyTicket ProposeBuyTicketAcc'>
-                  <span>{t('ProposeBuyTicketAcc')}</span>
+                  <span>{t('EmptyHistory')}</span>
                   <a href='/map' className='ButtonBuyTickets ButtonBuyTicketsAcc'><span>{t('BuyTickets')}</span></a>
                 </div>
               ) : (
