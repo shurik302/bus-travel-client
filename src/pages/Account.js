@@ -7,7 +7,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
-
 function Account() {
   const { t } = useTranslation();
   const now = moment();
@@ -22,7 +21,7 @@ function Account() {
 
   const isTripActive = useCallback((trip) => {
     const tripArrivalDateTime = moment(trip.date_arrival).add(2, 'hours');
-    return now.isBefore(tripArrivalDateTime);
+    return now.isBefore(tripArrivalDateTime) && trip.isActive === "активний";
   }, [now]);
 
   const fetchTrips = useCallback(async () => {
