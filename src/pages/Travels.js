@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import '../stylesheets/Travels.css';
@@ -42,14 +42,14 @@ function Travels() {
     fetchTrips();
   }, []);
 
-  const isTripActive = (trip) => {
+  const isTripActive = useCallback((trip) => {
     const tripArrivalDateTime = moment(trip.date_arrival).add(2, 'hours');
-    return now.isBefore(tripArrivalDateTime);
-  };
+    return now.isBefore(tripArrivalDateTime) && trip.isActive === 'активний';
+  }, [now]);
 
-  const activeTrips = trips
-    .filter(trip => isTripActive(trip) && trip.isActive === 'активний')
-    .sort((a, b) => moment(a.date_departure) - moment(b.date_departure));
+  const activeTrips = trips.filter(isTripActive).sort((a, b) => {
+    return moment(a.date_departure) - moment(b.date_departure);
+  });
 
   const groupTripsByDate = (trips) => {
     return trips.reduce((groupedTrips, trip) => {
