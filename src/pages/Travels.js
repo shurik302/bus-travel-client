@@ -6,7 +6,6 @@ import SadSmile from '../images/sad_smile.png';
 import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
 
-
 const getCityNameById = (id, language, cities) => {
   const city = cities.find(city => city.id === id);
   return city ? (language === 'ua' ? city.ukrainian : city.value) : '';
@@ -48,9 +47,9 @@ function Travels() {
     return now.isBefore(tripArrivalDateTime);
   };
 
-  const activeTrips = trips.filter(isTripActive).sort((a, b) => {
-    return moment(a.date_departure) - moment(b.date_departure);
-  });
+  const activeTrips = trips
+    .filter(trip => isTripActive(trip) && trip.isActive === 'активний')
+    .sort((a, b) => moment(a.date_departure) - moment(b.date_departure));
 
   const groupTripsByDate = (trips) => {
     return trips.reduce((groupedTrips, trip) => {
