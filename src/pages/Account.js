@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
+
 function Account() {
   const { t } = useTranslation();
   const now = moment();
@@ -32,26 +33,26 @@ function Account() {
         setIsLoadingTrips(false);
         return;
       }
-
+  
       const response = await axios.get('https://bus-travel-4dba9713d4f4.herokuapp.com/api/tickets/', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-
+  
       const trips = response.data;
       const active = trips
-        .filter(trip => isTripActive(trip) && trip.isActive === 'активний')
+        .filter(trip => trip.isActive && isTripActive(trip))
         .sort((a, b) => {
           return moment(a.date_departure) - moment(b.date_departure);
         });
-
+  
       const past = trips
-        .filter(trip => !isTripActive(trip))
+        .filter(trip => trip.isActive && !isTripActive(trip))
         .sort((a, b) => {
           return moment(b.date_departure) - moment(a.date_departure);
         });
-
+  
       setActiveTrips(active);
       setPastTrips(past);
     } catch (error) {
@@ -61,6 +62,7 @@ function Account() {
       setIsLoadingTrips(false);
     }
   }, [isTripActive]);
+  
 
   useEffect(() => {
     store.checkAuth().then(() => {
@@ -111,9 +113,6 @@ function Account() {
 
     return tripsToShow.map((trip, index) => (
       <div key={index} className='Trip'>
-        <Helmet>
-          <title>{t('titles.account')}</title> {/* Установите заголовок страницы */}
-        </Helmet>
         <div className='MainInfo'>
           <div className='Time'>
             <div className='TimeDep'>
@@ -182,6 +181,9 @@ function Account() {
 
   return (
     <div className='Account'>
+      <Helmet>
+        <title>{t('titles.account')}</title> {/* Установите заголовок страницы */}
+      </Helmet>
       <div className='MainContentAccount'>
         <div className='WelcomePartAccount'>
           <div className='UserWelcome'>
