@@ -16,8 +16,44 @@ function Travels() {
   const now = moment();
   const [trips, setTrips] = useState([]);
   const [cities, setCities] = useState([]);
+  const [isLoadingTrips, setIsLoadingTrips] = useState(true);
+  const [error, setError] = useState(null);
   const routeRef = useRef(null);
   const routeSymbolRef = useRef(null);
+
+  const isTripActive = useCallback((trip) => {
+    const tripArrivalDateTime = moment(trip.date_arrival).add(2, 'hours');
+    return now.isBefore(tripArrivalDateTime) && trip.isActive === 'активний';
+  }, [now]);
+
+  const fetchTrips = useCallback(async () => {
+    try {
+      const accessToken = localStorage.getItem('accessToken');
+      if (!accessToken) {
+        setError('User not authenticated');
+        setIsLoadingTrips(false);
+        return;
+      }
+
+      const response = await axios.get('https://bus-travel-4dba9713d4f4.herokuapp.com/api/tickets/', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      const trips = response.data;
+      const activeTrips = trips.filter(isTripActive).sort((a, b) => {
+        return moment(a.date_departure) - moment(b.date_departure);
+      });
+
+      setTrips(activeTrips);
+    } catch (error) {
+      setError('Error fetching trips');
+      console.error('Error fetching trips:', error);
+    } finally {
+      setIsLoadingTrips(false);
+    }
+  }, [isTripActive]);
 
   useEffect(() => {
     const fetchCities = async () => {
@@ -29,27 +65,9 @@ function Travels() {
       }
     };
 
-    const fetchTrips = async () => {
-      try {
-        const response = await axios.get('https://bus-travel-4dba9713d4f4.herokuapp.com/api/tickets');
-        setTrips(response.data);
-      } catch (error) {
-        console.error('Error fetching trips:', error);
-      }
-    };
-
     fetchCities();
     fetchTrips();
-  }, []);
-
-  const isTripActive = useCallback((trip) => {
-    const tripArrivalDateTime = moment(trip.date_arrival).add(2, 'hours');
-    return now.isBefore(tripArrivalDateTime) && trip.isActive === 'активний';
-  }, [now]);
-
-  const activeTrips = trips.filter(isTripActive).sort((a, b) => {
-    return moment(a.date_departure) - moment(b.date_departure);
-  });
+  }, [fetchTrips]);
 
   const groupTripsByDate = (trips) => {
     return trips.reduce((groupedTrips, trip) => {
@@ -62,7 +80,7 @@ function Travels() {
     }, {});
   };
 
-  const groupedTrips = groupTripsByDate(activeTrips);
+  const groupedTrips = groupTripsByDate(trips);
 
   useEffect(() => {
     if (routeRef.current && routeSymbolRef.current) {
@@ -70,6 +88,14 @@ function Travels() {
       routeSymbolRef.current.style.height = `${height}px`;
     }
   }, [groupedTrips]);
+
+  if (isLoadingTrips) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className='Travels'>
