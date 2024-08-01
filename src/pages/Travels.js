@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import '../stylesheets/Travels.css';
