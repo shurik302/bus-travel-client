@@ -18,8 +18,6 @@ function Travels() {
   const [cities, setCities] = useState([]);
   const [isLoadingTrips, setIsLoadingTrips] = useState(true);
   const [error, setError] = useState(null);
-  const routeRef = useRef(null);
-  const routeSymbolRef = useRef(null);
 
   const isTripActive = useCallback((trip) => {
     const tripArrivalDateTime = moment(trip.date_arrival).add(2, 'hours');
@@ -82,13 +80,6 @@ function Travels() {
 
   const groupedTrips = groupTripsByDate(trips);
 
-  useEffect(() => {
-    if (routeRef.current && routeSymbolRef.current) {
-      const height = routeRef.current.clientHeight;
-      routeSymbolRef.current.style.height = `${height}px`;
-    }
-  }, [groupedTrips]);
-
   if (isLoadingTrips) {
     return <div>Loading...</div>;
   }
@@ -100,7 +91,7 @@ function Travels() {
   return (
     <div className='Travels'>
       <Helmet>
-        <title>{t('titles.travels')}</title> {/* Установите заголовок страницы */}
+        <title>{t('titles.travels')}</title>
       </Helmet>
       <div className='Welcome'><span>{t('WelcomeTravel')}</span></div>
       <div className='FutureTravels FutureTravelsPage'>
@@ -123,7 +114,7 @@ function Travels() {
                               <span>{trip.arrival}</span>
                             </div>
                           </div>
-                          <div className='RouteSymbolTravels' ref={routeSymbolRef}>
+                          <div className='RouteSymbolTravels'>
                             <div className='Line'></div>
                             <div className='Circle top'>
                               <div className='InnerCircle'>
@@ -136,7 +127,7 @@ function Travels() {
                               </div>
                             </div>
                           </div>
-                          <div className='RouteTravels' ref={routeRef}>
+                          <div className='RouteTravels'>
                             <div className='FromTravels'>
                               <div className='PlaceTravels'>
                                 <span>{getCityNameById(trip.from, i18n.language, cities)}</span>
