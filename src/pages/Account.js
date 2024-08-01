@@ -21,7 +21,7 @@ function Account() {
 
   const isTripActive = useCallback((trip) => {
     const tripArrivalDateTime = moment(trip.date_arrival).add(2, 'hours');
-    return now.isBefore(tripArrivalDateTime) && trip.isActive === "активний";
+    return now.isBefore(tripArrivalDateTime);
   }, [now]);
 
   const fetchTrips = useCallback(async () => {
@@ -40,13 +40,17 @@ function Account() {
       });
 
       const trips = response.data;
-      const active = trips.filter(isTripActive).sort((a, b) => {
-        return moment(a.date_departure) - moment(b.date_departure);
-      });
+      const active = trips
+        .filter(trip => isTripActive(trip) && trip.isActive === 'активний')
+        .sort((a, b) => {
+          return moment(a.date_departure) - moment(b.date_departure);
+        });
 
-      const past = trips.filter(trip => !isTripActive(trip)).sort((a, b) => {
-        return moment(b.date_departure) - moment(a.date_departure);
-      });
+      const past = trips
+        .filter(trip => !isTripActive(trip))
+        .sort((a, b) => {
+          return moment(b.date_departure) - moment(a.date_departure);
+        });
 
       setActiveTrips(active);
       setPastTrips(past);
