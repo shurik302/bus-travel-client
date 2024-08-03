@@ -51,7 +51,7 @@
   "NameSerT": "Affordable and Safe Travel",
   "DescrSerT": "Traveling with us is not only affordable but also safe. We prioritize the safety of our passengers by ensuring that all our buses are equipped with the latest safety features and operated by experienced drivers. Enjoy competitive prices and various discounts to make your travel experience even more enjoyable.",
   "WhoWe": "Who are we?",
-  "WeAre": "We are TravelBus!",
+  "WeAre": "We are BusTravel!",
   "NameTitlePartF": "Welcome to BusTravel!",
   "TextTitlePartF": "We are a young and ambitious company that is just starting its journey in the bus transport industry. Our goal is to provide comfortable and safe travel for every customer. Our responsible approach to work and love for our business is what sets us apart from others.",
   "NameTitlePartS": "Responsibility and reliability are our priorities",
@@ -276,5 +276,6 @@
     "adminpanel": "Admin Panel",
     "qr-code": "QR Code"
   },
-  "ua":"ua"
+  "ua":"ua",
+  "FailedBuyTicket": "Couldn't buy a ticket, try checking the data!"
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import '../stylesheets/BuyTicket.css';
@@ -11,7 +11,7 @@ const BuyTicket = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const { travel, passengers, language } = location.state || {};
-
+  const history = useHistory();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [smallBaggage, setSmallBaggage] = useState(0);
@@ -19,6 +19,8 @@ const BuyTicket = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState({ text: '', buttonText: '', onClick: () => { } });
 
   const fromToTicketRef = useRef(null);
   const routeSymbolRef = useRef(null);
@@ -70,7 +72,12 @@ const BuyTicket = () => {
     const dateArrival = formatDate(travel.date_arrival);
 
     if (!dateDeparture || !dateArrival) {
-      alert('Invalid date format');
+      setModalContent({
+        text: t('FailedBuyTicket'),
+        buttonText: 'OK',
+        onClick: () => setShowModal(false)
+      });
+      setShowModal(true);
       return;
     }
 
@@ -115,37 +122,26 @@ const BuyTicket = () => {
       });
       console.log('Ticket created successfully:', response.data);
 
-      alert('Ticket created successfully');
+      setModalContent({
+        text: t('SuccesBuyTicket'),
+        buttonText: 'OK',
+        onClick: () => {
+          setShowModal(false);
+          history.push('/account');
+        }
+      });
+      setShowModal(true);
     } catch (error) {
       console.error('Error creating ticket:', error);
-
-      if (error.response) {
-        // Сервер відповів з кодом стану, який не знаходиться в діапазоні 2xx
-        switch (error.response.status) {
-          case 401:
-            alert('You are not authorized. Please log in.');
-            break;
-          case 403:
-            alert('You do not have permission to perform this action.');
-            break;
-          case 400:
-            alert('Bad request. Please check the input data.');
-            break;
-          case 500:
-            alert('Internal server error. Please try again later.');
-            break;
-          default:
-            alert('An unexpected error occurred. Please try again.');
-        }
-      } else if (error.request) {
-        // Запит був зроблений, але відповіді не отримано
-        alert('No response received from the server. Please check your network connection.');
-      } else {
-        // Щось сталося при налаштуванні запиту, що спричинило помилку
-        alert(`Error: ${error.message}`);
-      }
+      setModalContent({
+        text: t('FailedBuyTicket'),
+        buttonText: 'OK',
+        onClick: () => setShowModal(false)
+      });
+      setShowModal(true);
     }
   };
+
 
   const totalPrice = calculatePrice();
 
@@ -295,6 +291,15 @@ const BuyTicket = () => {
           </div>
         </div>
       </div>
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span>{modalContent.text}</span>
+            <button onClick={modalContent.onClick}>{modalContent.buttonText}</button>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
