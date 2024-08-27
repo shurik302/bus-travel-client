@@ -27,7 +27,7 @@ function SearchTickets() {
         }
 
         const response = await axios.get('https://bus-travel-4dba9713d4f4.herokuapp.com/api/flights/', {
-          params: { from, to, startDate }
+          params: { from, to }
         });
 
         const travels = response.data;
@@ -35,14 +35,38 @@ function SearchTickets() {
         console.log('Fetched travels:', travels);
 
         const searchStartDate = new Date(startDate);
+        const maxResults = 20;
+        let filteredTravels = [];
+        let currentSearchDate = new Date('2024-08-01'); // Начало поиска с 01.08.2024
 
-        const filteredTravels = travels.filter(travel => {
-          const travelDate = new Date(travel.date_departure);
-          return travelDate >= searchStartDate && travel.fromEN === from && travel.toEN === to;
-        });
+        // Цикл, продолжающий поиск до тех пор, пока не будет найдено 20 поездок или не исчерпан диапазон дат
+        while (filteredTravels.length < maxResults && currentSearchDate <= searchStartDate) {
+          travels.forEach(travel => {
+            const travelDate = new Date(travel.date_departure);
+
+            // Проверка на соответствие городов
+            if (travel.fromEN !== from || travel.toEN !== to) return;
+
+            // Проверка для одноразовых билетов
+            if (!travel.isDaily) {
+              if (travelDate.getTime() === currentSearchDate.getTime()) {
+                filteredTravels.push(travel);
+              }
+            } else {
+              // Проверка для ежедневных билетов
+              if (travelDate <= currentSearchDate) {
+                filteredTravels.push(travel);
+              }
+            }
+          });
+
+          // Переход на следующий день
+          currentSearchDate.setDate(currentSearchDate.getDate() + 1);
+        }
 
         console.log('Filtered travels:', filteredTravels);
 
+        // Сортировка по дате отправления (хотя по логике они уже будут отсортированы по дням в порядке поиска)
         filteredTravels.sort((a, b) => {
           const dateA = new Date(a.date_departure);
           const dateB = new Date(b.date_departure);
@@ -51,6 +75,7 @@ function SearchTickets() {
 
         console.log('Sorted travels:', filteredTravels);
 
+        // Группировка поездок по дате
         const grouped = filteredTravels.reduce((acc, travel) => {
           const dateKey = travel.date_departure.split('T')[0];
           if (!acc[dateKey]) {
